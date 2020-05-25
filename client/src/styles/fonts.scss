@@ -1,0 +1,30 @@
+@font-face {
+  font-family: roboto-lt;
+  src: url('./fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+  font-family: quicksand;
+  src: url('./fonts/Quicksand-Regular.ttf');
+}
+
+body {
+  font-family: quicksand, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+a,
+button.nav-link {
+  font-family: roboto-lt, sans-serif;
+  letter-spacing: 0.75px;
+  font-size: 20px;
+}
+
+p {
+  font-size: 20px;
+}
+
+button,
+form > .form-group > label {
+  font-size: 18px;
+}

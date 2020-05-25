@@ -1,0 +1,29 @@
+.about {
+  padding-top: 210px;
+
+  .about-container {
+    //padding: 0;
+
+    .top-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .img-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          border-radius: 50%;
+          box-shadow: $boxShadowMed;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .bottom-box {
+      padding-top: 50px;
+    }
+  }
+}

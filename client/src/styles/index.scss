@@ -1,0 +1,217 @@
+/* -------------- GLOBALS -------------- */
+$icon-font-path: '/fonts/';
+$white: rgb(255, 255, 255);
+$blue: rgb(102, 133, 230);
+$green: rgb(135, 237, 137);
+$yellow: rgb(238, 219, 81);
+$red: rgb(211, 0, 57);
+$grey: rgb(225, 225, 225);
+$fontColor: rgb(51, 51, 51);
+$siteBackground: rgb(250, 241, 216);
+$boxShadowSm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$boxShadowMed: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$glow: 0 0 8px $green;
+$borderRadius: 0;
+
+@import './custom_bootstrap';
+@import './fonts';
+@import './header';
+@import './about';
+@import './portfolio';
+@import './contact';
+
+/* -------------- FORMATTING -------------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container-fluid {
+  padding: 30px 0 0 0;
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: flex-start;
+  p {
+    font-size: 22px;
+  }
+}
+
+/* -------------- COLORS -------------- */
+/* Fix Safari's font weight issue */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button.nav-link {
+  text-decoration: none;
+  color: $blue !important;
+  transition: color 0.3s ease-in;
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $green !important;
+  }
+  &:focus {
+    color: $blue !important;
+  }
+}
+
+body,
+.container-fluid {
+  background: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+ul > li {
+  color: $fontColor;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+  .portfolio {
+    .portfolio-container {
+      .sidebar2017 {
+        border-right: 0;
+        padding-left: 15px;
+        border-bottom: 5px solid $blue;
+      }
+
+      .sidebar2016 {
+        border-right: 0;
+        padding-left: 15px;
+        border-bottom: 5px solid $green;
+      }
+
+      .portfolio-item {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .about {
+    padding-top: 120px;
+
+    .about-container {
+      padding: 0 15px;
+    }
+  }
+
+  .landing {
+    article {
+      p,
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 812px) {
+  header {
+    justify-content: flex-start;
+
+    .navbar {
+      .container {
+        .nav-item:last-child {
+          margin-left: 0;
+        }
+
+        .navbar-nav > .nav-item {
+          margin-left: 0;
+        }
+
+        .navbar-collapse {
+          .nav-item {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-height: 812px) and (max-height: 823px) {
+  .contact {
+    padding-bottom: 70px;
+  }
+}
+
+@media only screen and (min-height: 824px) {
+  .contact {
+    padding-bottom: 245px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 812px) {
+  .landing {
+    padding-left: 0;
+
+    .portfolio {
+      .portfolio-container {
+        margin-left: 15px;
+
+        .sidebar2016,
+        .sidebar2017 {
+          padding: 0;
+        }
+
+        .portfolio-item {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .contact {
+      .contact-container {
+        margin-left: 15px;
+
+        .sidebar {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (width: 1024px) {
+  .contact {
+    padding-bottom: 70px;
+  }
+}
+
+@media only screen and (width: 768px) {
+  .contact {
+    padding-bottom: 340px;
+  }
+}

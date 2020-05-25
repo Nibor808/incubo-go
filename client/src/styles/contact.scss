@@ -1,0 +1,46 @@
+.contact {
+  .header-container {
+    padding: 0;
+    p:last-of-type {
+      margin-bottom: 30px;
+    }
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+
+    .sidebar {
+      border-right: 10px solid $yellow;
+    }
+
+    form {
+      button {
+        box-shadow: $boxShadowSm;
+        background: $blue;
+        color: $white;
+        padding: 5px 20px;
+        border-radius: 0;
+        border: none;
+        margin-bottom: 10px;
+        outline: none;
+      }
+
+      .error {
+        color: $red;
+        margin-left: 20px;
+        font-size: 14px;
+      }
+
+      .send-div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .success {
+          color: $blue;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t robinerickson/incubo-docker -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true robinerickson/incubo-docker npm test
+
+after_success:
+  - docker build -t robinerickson/incubo-client ./client
+  - docker build -t robinerickson/incubo-nginx ./nginx
+  - docker build -t robinerickson/incubo-server ./server
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push robinerickson/incubo-client
+  - docker push robinerickson/incubo-nginx
+  - docker push robinerickson/incubo-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "incubo"
+  env: "Incubo-env"
+  bucket: "elasticbeanstalk-ca-central-1-585550510790"
+  bucket_path: "incubo"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

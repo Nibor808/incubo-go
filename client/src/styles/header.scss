@@ -1,0 +1,37 @@
+header {
+  .navbar {
+    background: $white;
+
+    .navbar-brand {
+      padding: 0;
+      margin: 8px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .container {
+      padding: 0;
+
+      .nav-item:last-child {
+        margin-left: 30px;
+      }
+
+      .navbar-nav > .nav-item {
+        margin-left: 80px;
+
+        button.nav-link {
+          padding: 0;
+          border: none;
+          background: $white;
+          outline: none;
+        }
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+      }
+    }
+  }
+}
