@@ -22,9 +22,6 @@ export default () => {
       document.getElementById('logo-img').style.width = '185px';
       document.getElementById('logo-img').style.transition = '0.4s';
     } else {
-      console.log('====================');
-      console.log('UNDER 30', document.documentElement.scrollTop);
-      console.log('====================');
       document.getElementById('logo-img').style.height = '110px';
       document.getElementById('logo-img').style.width = '258px';
     }

@@ -51,22 +51,22 @@ export default () => {
       setButtonClicked(true);
       setResponse({});
 
-      const info = {
+      const info = JSON.stringify({
         name,
         email,
         message,
-        recaptchaValue: recaptchaValue,
-      };
+        recaptchaValue,
+      });
 
-      const response = await axios.post('/api/sendmail', { info });
+      const response = await axios.post('/api/sendmail', info );
 
-      if (response.data.ok) {
+      if (response.data.Type === 'ok') {
         emailForm.reset();
         recaptchaRef.current.reset();
         setButtonClicked(false);
       }
 
-      setResponse(response.data);
+      setResponse(response);
       setButtonClicked(false);
 
       setTimeout(() => {
@@ -76,12 +76,12 @@ export default () => {
   };
 
   const showResponse = () => {
-    if (response) {
-      return response.error ? (
-        <p className='error'>{response.error}</p>
-      ) : (
-        <p className='success'>{response.ok}</p>
-      );
+    let klass;
+
+    if (response.data) {
+      response.data.Type === 'ok' ? klass = 'success' : klass = 'error';
+
+      return <p className={klass}>{response.data.Message}</p>;
     }
   };
 

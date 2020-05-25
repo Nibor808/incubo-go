@@ -14,8 +14,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./server
-    volumes:
-    - ./server:/app
 
   nginx:
     depends_on:

@@ -1,9 +1,17 @@
-FROM golang:1.13
-WORKDIR "/app"
-COPY . /app
-RUN go build main.go
+FROM golang:1.13 AS builder
+ENV GO111MODULE=on
+WORKDIR /app
 
-FROM alpine:latest
-WORKDIR "/app"
-COPY --from=0 /app .
-CMD ["go", "run", "main.go"]
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+EXPOSE 5000
+ENTRYPOINT ["/app/incubo-go-server"]
+
+#FROM alpine:latest
+#WORKDIR /usr/bin
+#COPY --from=builder /app/main .
+#CMD ["/app"]
