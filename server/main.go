@@ -70,7 +70,17 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		fmt.Println("BODY:", res.Body)
 		fmt.Println("Headers:", res.Headers)
 
-		_, err = w.Write([]byte("Something went wrong."))
+		js, err := json.Marshal(response{
+			Type:    "ok",
+			Message: "Thanks Got It! I'll be in touch soon.",
+		})
+		if err != nil {
+		    http.Error(w, err.Error(), http.StatusInternalServerError)
+		    return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		_, err = w.Write(js)
 		if err != nil {
 		    http.Error(w, err.Error(), http.StatusInternalServerError)
 		    return
@@ -86,6 +96,10 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(js)
+		_, err = w.Write(js)
+		if err != nil {
+		    http.Error(w, err.Error(), http.StatusInternalServerError)
+		    return
+		}
 	}
 }
