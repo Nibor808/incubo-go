@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "robinerickson/incubo-client",
+      "hostName": "client",
+      "essential": false,
+      "memory":128
+    },
+    {
+      "name": "server",
+      "image": "robinerickson/incubo-server",
+      "hostName": "api",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "robinerickson/incubo-nginx",
+      "hostName": "nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
