@@ -22,7 +22,7 @@ deploy:
   provider: elasticbeanstalk
   region: ca-central-1
   app: incubo
-  env: Incubo-env-1
+  env: Incubo-env
   bucket: elasticbeanstalk-ca-central-1-585550510790
   bucket_path: incubo
   on:
