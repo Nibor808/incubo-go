@@ -23,8 +23,8 @@ deploy:
   region: ca-central-1
   app: incubo
   env: Incubo-env
-  bucket: elasticbeanstalk-ca-central-1-585550510790
-  bucket_path: incubo
+  bucket: elasticbeanstalk-ca-central-1-526452955669
+  bucket_path: incuboweb
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
