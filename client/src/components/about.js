@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
 
@@ -50,9 +50,11 @@ const STATS = {
     return { __html: renderInfoDisplay() };
   };
 
-  setInterval(() => {
-    getTime();
-  }, 1000);
+  useEffect(() => {
+    const timeActive = setInterval(getTime, 1000);
+
+    return () => clearInterval(timeActive);
+  });
 
   return (
     <div className='row'>

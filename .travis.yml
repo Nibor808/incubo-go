@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t robinerickson/incubo-docker -f ./client/Dockerfile.dev ./client
+  - docker build -t robinerickson/incubo -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true robinerickson/incubo-docker npm test
+  - docker run -e CI=true robinerickson/incubo npm test
 
 after_success:
   - docker build -t robinerickson/incubo-client ./client
@@ -23,8 +23,8 @@ deploy:
   region: ca-central-1
   app: incubo
   env: Incubo-env
-  bucket: elasticbeanstalk-ca-central-1-585550510790
-  bucket_path: incubo
+  bucket: elasticbeanstalk-ca-central-1-526452955669
+  bucket_path: incuboweb
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
