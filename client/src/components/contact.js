@@ -49,8 +49,8 @@ export default () => {
       return setResponse({
         data: {
           Type: 'error',
-          Message: 'Please check the captcha'
-        }
+          Message: 'Please check the captcha',
+        },
       });
     } else {
       setButtonClicked(true);
@@ -63,7 +63,7 @@ export default () => {
         recaptchaValue,
       });
 
-      const response = await axios.post('/api/sendmail', info );
+      const response = await axios.post('/api/sendmail', info);
 
       if (response.data.Type === 'ok') {
         emailForm.reset();
@@ -84,7 +84,7 @@ export default () => {
     let klass;
 
     if (response.data) {
-      response.data.Type === 'ok' ? klass = 'success' : klass = 'error';
+      response.data.Type === 'ok' ? (klass = 'success') : (klass = 'error');
 
       return <p className={klass}>{response.data.Message}</p>;
     }

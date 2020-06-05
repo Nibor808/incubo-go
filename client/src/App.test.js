@@ -16,7 +16,7 @@ test('renders logo image', () => {
 
 test('renders 2017 list', () => {
   const { getByTestId } = render(<App />);
-  const list2017= getByTestId('2017-list');
+  const list2017 = getByTestId('2017-list');
   expect(list2017).toBeInTheDocument();
 });
 
