@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
 	"github.com/sendgrid/sendgrid-go"
@@ -35,6 +34,7 @@ func main() {
 
 	r.POST("/sendmail", sendMail)
 
+	log.Println("Listening on 5000")
 	log.Fatal(http.ListenAndServe(":5000", r))
 }
 
@@ -65,14 +65,11 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	client := sendgrid.NewSendClient(apiKey)
 
 	if res, err := client.Send(message); err != nil {
-		fmt.Println("Failed to send email:", err)
-		fmt.Println("CODE:", res.StatusCode)
-		fmt.Println("BODY:", res.Body)
-		fmt.Println("Headers:", res.Headers)
+		log.Println("Failed to send email:", err)
 
 		js, err := json.Marshal(response{
-			Type:    "ok",
-			Message: "Thanks Got It! I'll be in touch soon.",
+			Type:    "error",
+			Message: "Failed to send email",
 		})
 		if err != nil {
 		    http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -86,6 +83,9 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		    return
 		}
 	} else {
+		log.Println("**Email Sent**")
+		log.Println("CODE:", res.StatusCode)
+
 		js, err := json.Marshal(response{
 			Type:    "ok",
 			Message: "Thanks Got It! I'll be in touch soon.",

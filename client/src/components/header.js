@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../styles/images/incubo_logo.jpg';
-import twitter from '../styles/images/twitter_circle.jpg';
 import linkedIn from '../styles/images/linkedin.jpg';
 
 export default props => {
@@ -56,17 +55,6 @@ export default props => {
                 </button>
               </li>
             </ul>
-
-            <div className='nav-item'>
-              <a
-                className='nav-link'
-                href='https://twitter.com/incuboweb'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <img src={twitter} alt='incubo twitter' />
-              </a>
-            </div>
 
             <div className='nav-item'>
               <a

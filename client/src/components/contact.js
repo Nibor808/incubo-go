@@ -46,7 +46,12 @@ export default () => {
     const recaptchaValue = recaptchaRef.current.getValue();
 
     if (!recaptchaValue) {
-      return setResponse({ error: 'Please check the captcha' });
+      return setResponse({
+        data: {
+          Type: 'error',
+          Message: 'Please check the captcha'
+        }
+      });
     } else {
       setButtonClicked(true);
       setResponse({});
