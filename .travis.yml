@@ -18,14 +18,14 @@ after_success:
   - docker push robinerickson/incubo-nginx
   - docker push robinerickson/incubo-server
 
-deploy:
-  provider: elasticbeanstalk
-  region: ca-central-1
-  app: incubo
-  env: Incubo-env
-  bucket: elasticbeanstalk-ca-central-1-585550510790
-  bucket_path: incubo
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+#deploy:
+#  provider: elasticbeanstalk
+#  region: ca-central-1
+#  app: incubo
+#  env: Incubo-env
+#  bucket: elasticbeanstalk-ca-central-1-526452955669
+#  bucket_path: incubo
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
