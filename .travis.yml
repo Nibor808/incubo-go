@@ -13,7 +13,7 @@ after_success:
   - docker --version
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - eval aws ecr get-login --no-include-email --region ca-central-1)
+  - eval $(aws ecr get-login --no-include-email --region ca-central-1)
   - docker build -t incubo-client ./client
   - docker build -t incubo-api ./api
   - docker build -t incubo-nginx ./nginx
