@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
@@ -25,8 +26,17 @@ type response struct {
 }
 
 func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Println("ENV file not found.")
+	dir, err := filepath.Abs((filepath.Dir(os.Args[0])))
+	if err != nil {
+		log.Fatal(err)
+	}
+	environmentPath := filepath.Join(dir, ".env")
+	if err := godotenv.Load(environmentPath); err != nil {
+		log.Println("ENV file not found in MAIN.")
+	}
+
+	if err := godotenv.Load("./.env"); err != nil {
+		log.Println("ENV file not found in MAIN.")
 	}
 }
 
@@ -49,9 +59,9 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		log.Fatalln(err)
 	}
 
-	adminEmail, sEExists := os.LookupEnv("ADMIN_EMAIL")
-	if !sEExists {
-		log.Fatal("Cannot get Support email")
+	devEmail, dEExists := os.LookupEnv("DEV_EMAIL")
+	if !dEExists {
+		log.Fatal("cannot get dev email")
 	}
 
 	apiKey, akExists := os.LookupEnv("SENDGRID_API_KEY")
@@ -59,10 +69,12 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		log.Fatal("No api key for sendgrid")
 	}
 
-	to := mail.NewEmail("", adminEmail)
-	from := mail.NewEmail("", data.Email)
+	to := mail.NewEmail("", devEmail)
+	from := mail.NewEmail("", devEmail)
 
-	message := mail.NewSingleEmail(from, "incubo development inquiry", to, data.Message, data.Message)
+	content := data.Email + " - " + data.Message
+
+	message := mail.NewSingleEmail(from, "incubo development inquiry", to, content, content)
 	client := sendgrid.NewSendClient(apiKey)
 
 	if res, err := client.Send(message); err != nil {
@@ -86,6 +98,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	} else {
 		log.Println("**Email Sent**")
 		log.Println("CODE:", res.StatusCode)
+		log.Println("BODY:", res.Body)
 
 		js, err := json.Marshal(response{
 			Type:    "ok",
