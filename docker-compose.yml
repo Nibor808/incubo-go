@@ -13,9 +13,9 @@ services:
   api:
     build:
       dockerfile: Dockerfile
-      context: ./server
+      context: ./api
     env_file:
-      - ./server/.env
+      - ./api/.env
 
   nginx:
     depends_on:

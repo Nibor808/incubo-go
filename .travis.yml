@@ -10,13 +10,28 @@ script:
   - docker run -e CI=true robinerickson/incubo npm test
 
 after_success:
-  - docker build -t robinerickson/incubo-client ./client
-  - docker build -t robinerickson/incubo-nginx ./nginx
-  - docker build -t robinerickson/incubo-server ./server
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push robinerickson/incubo-client
-  - docker push robinerickson/incubo-nginx
-  - docker push robinerickson/incubo-server
+  - docker --version
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - eval aws ecr get-login --no-include-email --region ca-central-1)
+  - docker build -t incubo-client ./client
+  - docker build -t incubo-api ./api
+  - docker build -t incubo-nginx ./nginx
+  - docker tag incubo-client:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+  - docker tag incubo-api:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+  - docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
+  - docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+  - docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+  - docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
+
+# after_success:
+#   - docker build -t robinerickson/incubo-client ./client
+#   - docker build -t robinerickson/incubo-nginx ./nginx
+#   - docker build -t robinerickson/incubo-server ./server
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#   - docker push robinerickson/incubo-client
+#   - docker push robinerickson/incubo-nginx
+#   - docker push robinerickson/incubo-server
 
 deploy:
   provider: elasticbeanstalk
