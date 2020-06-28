@@ -62,7 +62,7 @@ export const list2017 = [
         <div className='row'>
           <div className='col'>
             <img
-              src={odfFullThumb}
+              data-src={odfFullThumb}
               className='img-fluid clickable lazyload'
               alt='Online Divorce Forms Landing Page'
               data-text={odfFull}
@@ -72,7 +72,7 @@ export const list2017 = [
 
           <div className='col'>
             <img
-              src={odfFormsThumb}
+              data-src={odfFormsThumb}
               className='img-fluid clickable lazyload'
               alt={`Online Divorce Forms User's Forms List`}
               data-text={odfForms}
@@ -82,7 +82,7 @@ export const list2017 = [
 
           <div className='col'>
             <img
-              src={odfAccessSchedulerThumb}
+              data-src={odfAccessSchedulerThumb}
               className='img-fluid clickable lazyload'
               alt='Online Divorce Forms Access Scheduler'
               data-text={odfAccessScheduler}
@@ -123,7 +123,7 @@ export const list2017 = [
     },
     image: () => (
       <img
-        src={jesstech}
+        data-src={jesstech}
         className='img-fluid lazyload'
         alt='Jesstech Landing Page'
       />
@@ -143,7 +143,7 @@ export const list2017 = [
     ),
     image: () => (
       <img
-        src={lakeshore}
+        data-src={lakeshore}
         className='img-fluid lazyload'
         alt='Lakeshore Electric Landing Page'
       />
@@ -169,7 +169,7 @@ export const list2017 = [
     ),
     image: () => (
       <img
-        src={incuboOld}
+        data-src={incuboOld}
         className='img-fluid lazyload'
         alt='Old Incubo Landing Page'
       />
@@ -217,7 +217,7 @@ export const list2016 = [
     },
     image: () => (
       <img
-        src={casemon}
+        data-src={casemon}
         className='img-fluid lazyload'
         alt='Casemon Landing Page'
       />
@@ -241,7 +241,7 @@ export const list2016 = [
         rel='noopener noreferrer'
       >
         <img
-          src={appStoreBadge}
+          data-src={appStoreBadge}
           id='badge'
           className='img-fluid lazyload'
           alt='app store badge'
@@ -268,7 +268,7 @@ export const list2016 = [
         <div className='row'>
           <div className='col'>
             <img
-              src={plus3Calc}
+              data-src={plus3Calc}
               data-text={plus3Calc}
               className='img-fluid clickable lazyload'
               alt='+3 Calculator'
@@ -278,7 +278,7 @@ export const list2016 = [
 
           <div className='col'>
             <img
-              src={plus3Curr}
+              data-src={plus3Curr}
               data-text={plus3Curr}
               className='img-fluid clickable lazyload'
               alt='+3 Currency Converter'
@@ -288,7 +288,7 @@ export const list2016 = [
 
           <div className='col'>
             <img
-              src={plus3Units}
+              data-src={plus3Units}
               data-text={plus3Units}
               className='img-fluid clickable lazyload'
               alt='+3 Units Converter'

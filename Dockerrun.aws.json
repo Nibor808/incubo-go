@@ -9,7 +9,7 @@
       "memory":128
     },
     {
-      "name": "server",
+      "name": "api",
       "image": "robinerickson/incubo-server",
       "hostName": "api",
       "essential": false,
@@ -27,7 +27,7 @@
           "containerPort": 80
         }
       ],
-      "links": ["client", "server"]
+      "links": ["client", "api"]
     }
   ]
 }

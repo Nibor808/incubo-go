@@ -2,24 +2,25 @@ package main
 
 import (
 	"encoding/json"
+	"log"
+	"net/http"
+	"os"
+
 	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
-	"log"
-	"net/http"
-	"os"
 )
 
 type emailData struct {
-	Name string `json:"name"`
-	Email string `json:"email"`
+	Name    string `json:"name"`
+	Email   string `json:"email"`
 	Message string `json:"message"`
 	Captcha string `json:"recaptchaValue"`
 }
 
 type response struct {
-	Type string
+	Type    string
 	Message string
 }
 
@@ -53,8 +54,8 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		log.Fatal("Cannot get Support email")
 	}
 
-	apiKey, kExists := os.LookupEnv("SENDGRID_API_KEY")
-	if !kExists {
+	apiKey, akExists := os.LookupEnv("SENDGRID_API_KEY")
+	if !akExists {
 		log.Fatal("No api key for sendgrid")
 	}
 
@@ -72,15 +73,15 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			Message: "Failed to send email",
 		})
 		if err != nil {
-		    http.Error(w, err.Error(), http.StatusInternalServerError)
-		    return
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		w.Header().Set("Content-Type", "application/json")
 		_, err = w.Write(js)
 		if err != nil {
-		    http.Error(w, err.Error(), http.StatusInternalServerError)
-		    return
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 	} else {
 		log.Println("**Email Sent**")
@@ -98,8 +99,8 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		w.Header().Set("Content-Type", "application/json")
 		_, err = w.Write(js)
 		if err != nil {
-		    http.Error(w, err.Error(), http.StatusInternalServerError)
-		    return
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 	}
 }
