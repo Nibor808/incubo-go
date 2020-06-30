@@ -24,14 +24,14 @@ after_success:
 - docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
 - docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
 
-deploy:
-  provider: elasticbeanstalk
-  region: ca-central-1
-  app: incubo
-  env: Incubo-env
-  bucket: elasticbeanstalk-ca-central-1-526452955669
-  bucket_path: incubo
-  on:
-    branch: master
-  access_key_id: "$AWS_ACCESS_KEY_ID"
-  secret_access_key: "$AWS_SECRET_ACCESS_KEY"
+# deploy:
+#   provider: elasticbeanstalk
+#   region: ca-central-1
+#   app: incubo
+#   env: Incubo-env
+#   bucket: elasticbeanstalk-ca-central-1-526452955669
+#   bucket_path: incubo
+#   on:
+#     branch: master
+#   access_key_id: "$AWS_ACCESS_KEY_ID"
+#   secret_access_key: "$AWS_SECRET_ACCESS_KEY"
