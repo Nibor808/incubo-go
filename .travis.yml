@@ -4,10 +4,10 @@ services:
 - docker
 
 before_install:
-- docker build -t robinerickson/incubo -f ./client/Dockerfile.dev ./client
+- docker build -t incubo-client -f ./client/Dockerfile.dev ./client
 
 script:
-- docker run -e CI=true robinerickson/incubo npm test
+- docker run -e CI=true incubo-client npm test
 
 after_success:
 - docker --version
