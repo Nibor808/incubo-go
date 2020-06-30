@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path/filepath"
 
 	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
@@ -26,15 +25,6 @@ type response struct {
 }
 
 func init() {
-	dir, err := filepath.Abs((filepath.Dir(os.Args[0])))
-	if err != nil {
-		log.Fatal(err)
-	}
-	environmentPath := filepath.Join(dir, ".env")
-	if err := godotenv.Load(environmentPath); err != nil {
-		log.Println("ENV file not found in MAIN.")
-	}
-
 	if err := godotenv.Load("./.env"); err != nil {
 		log.Println("ENV file not found in MAIN.")
 	}

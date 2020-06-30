@@ -3,21 +3,21 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "robinerickson/incubo-client",
+      "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest",
       "hostName": "client",
       "essential": false,
       "memory":128
     },
     {
       "name": "api",
-      "image": "robinerickson/incubo-server",
+      "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest",
       "hostName": "api",
       "essential": false,
       "memory": 128
     },
     {
       "name": "nginx",
-      "image": "robinerickson/incubo-nginx",
+      "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest",
       "hostName": "nginx",
       "essential": true,
       "memory": 128,
