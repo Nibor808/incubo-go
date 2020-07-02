@@ -26,7 +26,7 @@ type response struct {
 
 func init() {
 	if err := godotenv.Load("./.env"); err != nil {
-		log.Println("ENV file not found in MAIN.")
+		log.Println("ENV file not found.")
 	}
 }
 
