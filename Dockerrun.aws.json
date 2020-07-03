@@ -6,14 +6,26 @@
       "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest",
       "hostName": "client",
       "essential": false,
-      "memory":128
+      "memory":128,
+      "portMappings": [
+        {
+          "hostPort": 3000,
+          "containerPort": 3000
+        }
+      ]
     },
     {
       "name": "api",
       "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest",
       "hostName": "api",
       "essential": false,
-      "memory": 128
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 5000,
+          "containerPort": 5000
+        }
+      ]
     },
     {
       "name": "nginx",
