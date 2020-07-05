@@ -27,10 +27,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: ca-central-1
-  app: incuboweb
-  env: Incuboweb-env
+  app: incubo
+  env: Incubo-env
   bucket: elasticbeanstalk-ca-central-1-526452955669
-  bucket_path: incuboweb
+  bucket_path: incubo
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY_ID"
