@@ -26,7 +26,7 @@ export default () => {
 const STATS = {
   "location": {
     "province": "Ontario",
-    "country": "Canada"
+    "country": "Canada",
   },
   "time_active": {
     "years": ${years},
@@ -34,13 +34,13 @@ const STATS = {
     "days": ${days},
     "hours": ${hours},
     "minutes": ${minutes},
-    "seconds": ${seconds}
+    "seconds": ${seconds},
   },
   "skills": [
     "problem_solving",
     "clean_ui",
     "clean_code",
-    "collaboration"
+    "collaboration",
   ]
 };
       </pre>`;
