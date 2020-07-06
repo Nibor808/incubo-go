@@ -102,6 +102,10 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 				return
 			}
 		} else {
+			log.Println("**Failed to send email**")
+			log.Println("CODE:", res.StatusCode)
+			log.Println("BODY:", res.Body)
+
 			js, err = json.Marshal(response{
 				Type:    "error",
 				Message: "Failed to send email",
