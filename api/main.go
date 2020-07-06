@@ -60,9 +60,9 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 
 	to := mail.NewEmail("", devEmail)
-	from := mail.NewEmail("", devEmail)
+	from := mail.NewEmail("", data.Email)
 
-	content := data.Email + " - " + data.Message
+	content := data.Name + " - " + data.Message
 
 	message := mail.NewSingleEmail(from, "incubo development inquiry", to, content, content)
 	client := sendgrid.NewSendClient(apiKey)
