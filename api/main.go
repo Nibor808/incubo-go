@@ -60,9 +60,9 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 
 	to := mail.NewEmail("", devEmail)
-	from := mail.NewEmail("", data.Email)
+	from := mail.NewEmail("", devEmail)
 
-	content := data.Name + " - " + data.Message
+	content := data.Name + ": " + data.Email + " - " + data.Message
 
 	message := mail.NewSingleEmail(from, "incubo development inquiry", to, content, content)
 	client := sendgrid.NewSendClient(apiKey)
@@ -86,17 +86,30 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			return
 		}
 	} else {
-		log.Println("**Email Sent**")
-		log.Println("CODE:", res.StatusCode)
-		log.Println("BODY:", res.Body)
+		var js []byte
 
-		js, err := json.Marshal(response{
-			Type:    "ok",
-			Message: "Thanks Got It! I'll be in touch soon.",
-		})
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+		if res.StatusCode == 202 || res.StatusCode == 200 {
+			log.Println("**Email Sent**")
+			log.Println("CODE:", res.StatusCode)
+			log.Println("BODY:", res.Body)
+
+			js, err = json.Marshal(response{
+				Type:    "ok",
+				Message: "Thanks Got It! I'll be in touch soon.",
+			})
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+		} else {
+			js, err = json.Marshal(response{
+				Type:    "error",
+				Message: "Failed to send email",
+			})
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
 		}
 
 		w.Header().Set("Content-Type", "application/json")
