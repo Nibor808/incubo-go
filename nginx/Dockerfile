@@ -1,4 +1,3 @@
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY ./.htpasswd /etc/nginx/
 RUN mkdir -p /data/nginx/cache
