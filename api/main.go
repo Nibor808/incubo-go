@@ -39,6 +39,13 @@ func main() {
 	log.Fatal(http.ListenAndServe(":5000", r))
 }
 
+func setUpResponse(w *http.ResponseWriter, r *http.Request) {
+	(*w).Header().Set("Content-Type", "application/json")
+	(*w).Header().Set("Access_control-Allow_origin", "*")
+	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS,PUT, DELETE")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+}
+
 func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	decoder := json.NewDecoder(r.Body)
 	decoder.DisallowUnknownFields()
@@ -116,10 +123,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			}
 		}
 
-		w.Header().Set("Content-Type", "application/json")
-		w.Header().Set("Access_control-Allow_origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS,PUT, DELETE")
-		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+		setUpResponse(&w, r)
 
 		_, err = w.Write(js)
 		if err != nil {
