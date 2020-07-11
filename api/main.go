@@ -117,6 +117,10 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access_control-Allow_origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS,PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+
 		_, err = w.Write(js)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
