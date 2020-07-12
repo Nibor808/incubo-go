@@ -24,7 +24,11 @@
       "portMappings": [
         {
           "hostPort": 80,
-          "containerPort": 80
+          "containerPort": 8080
+        },
+        {
+          "hostPort": 443,
+          "containerPort": 8443
         }
       ],
       "links": ["client", "api"]
