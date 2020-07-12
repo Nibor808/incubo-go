@@ -4,7 +4,7 @@ services:
   client:
     stdin_open: true # to fix bug in create-react-app
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
       context: ./client
     volumes:
     - /app/node_modules
