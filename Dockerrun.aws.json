@@ -43,8 +43,12 @@
       "memory": 128,
       "portMappings": [
         {
-          "hostPort": 80,
-          "containerPort": 80
+          "hostPort": 8080,
+          "containerPort": 8080
+        },
+        {
+          "hostPort": 8443,
+          "containerPort": 8443
         }
       ],
       "links": ["client", "api"]
