@@ -34,36 +34,9 @@ func main() {
 	r := httprouter.New()
 
 	r.POST("/sendmail", sendMail)
-	r.POST("/testback", testBackend)
 
 	log.Println("Listening on 5000")
 	log.Fatal(http.ListenAndServe(":5000", r))
-}
-
-func setUpResponse(w *http.ResponseWriter) {
-	(*w).Header().Set("Content-Type", "application/json")
-	// (*w).Header().Set("Access_control-Allow_origin", "*")
-	// (*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-	// (*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
-}
-
-func testBackend(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	setUpResponse(&w)
-
-	js, err := json.Marshal(response{
-		Type:    "ok",
-		Message: "working",
-	})
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	_, err = w.Write(js)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
 }
 
 func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
@@ -143,7 +116,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			}
 		}
 
-		setUpResponse(&w)
+		w.Header().Set("Content-Type", "application/json")
 
 		_, err = w.Write(js)
 		if err != nil {
