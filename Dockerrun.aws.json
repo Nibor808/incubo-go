@@ -43,7 +43,7 @@
       "memory": 128,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 443,
           "containerPort": 8080
         }
       ],
