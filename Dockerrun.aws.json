@@ -45,10 +45,6 @@
         {
           "hostPort": 80,
           "containerPort": 80
-        },
-        {
-          "hostPort": 443,
-          "containerPort": 8443
         }
       ],
       "links": ["client", "api"]
