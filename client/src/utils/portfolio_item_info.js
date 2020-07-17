@@ -1,5 +1,4 @@
 import React from 'react';
-import 'lazysizes';
 import odfFullThumb from '../styles/images/odf-full-thumb.jpg';
 import odfFull from '../styles/images/odf-full.jpg';
 import odfFormsThumb from '../styles/images/odf-forms-thumb.jpg';
@@ -62,8 +61,8 @@ export const list2017 = [
         <div className='row'>
           <div className='col'>
             <img
-              data-src={odfFullThumb}
-              className='img-fluid clickable lazyload'
+              src={odfFullThumb}
+              className='img-fluid clickable'
               alt='Online Divorce Forms Landing Page'
               data-text={odfFull}
               onClick={ev => handleClick(ev)}
@@ -72,8 +71,8 @@ export const list2017 = [
 
           <div className='col'>
             <img
-              data-src={odfFormsThumb}
-              className='img-fluid clickable lazyload'
+              src={odfFormsThumb}
+              className='img-fluid clickable'
               alt={`Online Divorce Forms User's Forms List`}
               data-text={odfForms}
               onClick={ev => handleClick(ev)}
@@ -82,8 +81,8 @@ export const list2017 = [
 
           <div className='col'>
             <img
-              data-src={odfAccessSchedulerThumb}
-              className='img-fluid clickable lazyload'
+              src={odfAccessSchedulerThumb}
+              className='img-fluid clickable'
               alt='Online Divorce Forms Access Scheduler'
               data-text={odfAccessScheduler}
               onClick={ev => handleClick(ev)}
@@ -123,8 +122,8 @@ export const list2017 = [
     },
     image: () => (
       <img
-        data-src={jesstech}
-        className='img-fluid lazyload'
+        src={jesstech}
+        className='img-fluid'
         alt='Jesstech Landing Page'
       />
     ),
@@ -143,8 +142,8 @@ export const list2017 = [
     ),
     image: () => (
       <img
-        data-src={lakeshore}
-        className='img-fluid lazyload'
+        src={lakeshore}
+        className='img-fluid'
         alt='Lakeshore Electric Landing Page'
       />
     ),
@@ -169,8 +168,8 @@ export const list2017 = [
     ),
     image: () => (
       <img
-        data-src={incuboOld}
-        className='img-fluid lazyload'
+        src={incuboOld}
+        className='img-fluid'
         alt='Old Incubo Landing Page'
       />
     ),
@@ -217,8 +216,8 @@ export const list2016 = [
     },
     image: () => (
       <img
-        data-src={casemon}
-        className='img-fluid lazyload'
+        src={casemon}
+        className='img-fluid'
         alt='Casemon Landing Page'
       />
     ),
@@ -241,9 +240,9 @@ export const list2016 = [
         rel='noopener noreferrer'
       >
         <img
-          data-src={appStoreBadge}
+          src={appStoreBadge}
           id='badge'
-          className='img-fluid lazyload'
+          className='img-fluid'
           alt='app store badge'
         />
       </a>
@@ -268,9 +267,9 @@ export const list2016 = [
         <div className='row'>
           <div className='col'>
             <img
-              data-src={plus3Calc}
+              src={plus3Calc}
               data-text={plus3Calc}
-              className='img-fluid clickable lazyload'
+              className='img-fluid clickable'
               alt='+3 Calculator'
               onClick={ev => handleClick(ev)}
             />
@@ -278,9 +277,9 @@ export const list2016 = [
 
           <div className='col'>
             <img
-              data-src={plus3Curr}
+              src={plus3Curr}
               data-text={plus3Curr}
-              className='img-fluid clickable lazyload'
+              className='img-fluid clickable'
               alt='+3 Currency Converter'
               onClick={ev => handleClick(ev)}
             />
@@ -288,9 +287,9 @@ export const list2016 = [
 
           <div className='col'>
             <img
-              data-src={plus3Units}
+              src={plus3Units}
               data-text={plus3Units}
-              className='img-fluid clickable lazyload'
+              className='img-fluid clickable'
               alt='+3 Units Converter'
               onClick={ev => handleClick(ev)}
             />
