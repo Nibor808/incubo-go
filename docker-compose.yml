@@ -12,8 +12,10 @@ services:
 
   api:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
+    volumes:
+      - ./api:/incubo
     env_file:
       - ./api/.env
 

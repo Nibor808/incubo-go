@@ -1,4 +1,4 @@
-FROM golang:1.13
+FROM golang:latest
 ENV GO111MODULE=on
 WORKDIR /incubo
 

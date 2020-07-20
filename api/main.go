@@ -4,12 +4,11 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"net/smtp"
 	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
-	"github.com/sendgrid/sendgrid-go"
-	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
 
 type emailData struct {
@@ -50,78 +49,55 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 
 	devEmail, dEExists := os.LookupEnv("DEV_EMAIL")
-	if !dEExists {
-		log.Fatal("cannot get dev email")
+	adminEmail, aEExists := os.LookupEnv("ADMIN_EMAIL")
+	mailPass, mPExists := os.LookupEnv("MAIL_PASS")
+
+	if !dEExists || !aEExists || !mPExists {
+		log.Fatal("cannot get mail env variables")
 	}
 
-	apiKey, akExists := os.LookupEnv("SENDGRID_API_KEY")
-	if !akExists {
-		log.Fatal("No api key for sendgrid")
-	}
+	auth := smtp.PlainAuth("", adminEmail, mailPass, "webmail.torontovendors.com")
+	to := []string{devEmail}
 
-	to := mail.NewEmail("", devEmail)
-	from := mail.NewEmail("", devEmail)
+	msg := []byte("To: " + devEmail + "\r\n" +
+		"Subject: Development Inquiry" +
+		"\r\n" +
+		data.Email +
+		"\r\n" +
+		"\r\n" +
+		data.Message +
+		"\r\n")
 
-	content := data.Name + ": " + data.Email + " - " + data.Message
+	err = smtp.SendMail("webmail.torontovendors.com:587", auth, data.Email, to, msg)
 
-	message := mail.NewSingleEmail(from, "incubo development inquiry", to, content, content)
-	client := sendgrid.NewSendClient(apiKey)
-
-	if res, err := client.Send(message); err != nil {
+	var js []byte
+	if err != nil {
 		log.Println("Failed to send email:", err)
 
-		js, err := json.Marshal(response{
+		js, err = json.Marshal(response{
 			Type:    "error",
-			Message: "Failed to send email",
+			Message: "Oops! We broke it. Please try again later.",
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
-		w.Header().Set("Content-Type", "application/json")
-		_, err = w.Write(js)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
 	} else {
-		var js []byte
-
-		if res.StatusCode == 202 || res.StatusCode == 200 {
-			log.Println("**Email Sent**")
-			log.Println("CODE:", res.StatusCode)
-			log.Println("BODY:", res.Body)
-
-			js, err = json.Marshal(response{
-				Type:    "ok",
-				Message: "Thanks Got It! I'll be in touch soon.",
-			})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-		} else {
-			log.Println("**Failed to send email**")
-			log.Println("CODE:", res.StatusCode)
-			log.Println("BODY:", res.Body)
-
-			js, err = json.Marshal(response{
-				Type:    "error",
-				Message: "Failed to send email",
-			})
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-		}
-
-		w.Header().Set("Content-Type", "application/json")
-
-		_, err = w.Write(js)
+		js, err = json.Marshal(response{
+			Type:    "ok",
+			Message: "Thanks Got It! I'll be in touch soon.",
+		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+
+	_, err = w.Write(js)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 }

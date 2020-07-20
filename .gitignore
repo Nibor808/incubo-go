@@ -6,6 +6,9 @@
 # testing
 /client/coverage
 
+# development
+/api/incubo-go-server
+
 # production
 /client/build
 
