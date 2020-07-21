@@ -48,24 +48,31 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		log.Fatalln(err)
 	}
 
-	devEmail, dEExists := os.LookupEnv("DEV_EMAIL")
 	adminEmail, aEExists := os.LookupEnv("ADMIN_EMAIL")
 	mailPass, mPExists := os.LookupEnv("MAIL_PASS")
+	mailHost, mHExists := os.LookupEnv("MAIL_HOST")
 
-	if !dEExists || !aEExists || !mPExists {
+	if !aEExists || !mPExists || !mHExists {
 		log.Fatal("cannot get mail env variables")
 	}
 
-	auth := smtp.PlainAuth("", adminEmail, mailPass, "webmail.torontovendors.com")
-	to := []string{devEmail}
+	auth := smtp.PlainAuth("", adminEmail, mailPass, mailHost)
+	to := []string{adminEmail}
 
-	msg := []byte("To: " + devEmail + "\r\n" +
+	msg := []byte("To: " + adminEmail + "\r\n" +
 		"Subject: Development Inquiry \r\n" +
-		"From: " + data.Email + "\r\n" +
+		"From: " + adminEmail + "\r\n" +
+		"Reply: " + adminEmail + "\r\n" +
+		data.Name +
+		"\r\n" +
+		"\r\n" +
+		data.Email +
+		"\r\n" +
+		"\r\n" +
 		data.Message +
 		"\r\n")
 
-	err = smtp.SendMail("webmail.torontovendors.com:587", auth, data.Email, to, msg)
+	err = smtp.SendMail(mailHost + ":587", auth, adminEmail, to, msg)
 
 	var js []byte
 	if err != nil {
