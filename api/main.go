@@ -61,6 +61,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	msg := []byte("To: " + devEmail + "\r\n" +
 		"Subject: Development Inquiry" +
+		"From: " + data.Email +
 		"\r\n" +
 		data.Email +
 		"\r\n" +
