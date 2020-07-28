@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, Suspense } from 'react';
 import validateForm from '../utils/validate_form';
-import ContactForm from './contact_form';
 import axios from 'axios';
+const ContactForm = React.lazy(() => import('./contact_form'));
 
 export default () => {
   const recaptchaRef = useRef({});
@@ -111,24 +111,26 @@ export default () => {
 
   return (
     <div data-testid='contact-div'>
-      <ContactForm
-        sendMail={sendMail}
-        onChange={handleChange}
-        errors={{
-          nameError,
-          emailError,
-          messageError,
-        }}
-        borders={{
-          nameErrorBorder,
-          emailErrorBorder,
-          messageErrorBorder,
-        }}
-        showResponse={showResponse}
-        recaptchaRef={recaptchaRef}
-        buttonText={buttonText}
-        buttonClicked={buttonClicked}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactForm
+          sendMail={sendMail}
+          onChange={handleChange}
+          errors={{
+            nameError,
+            emailError,
+            messageError,
+          }}
+          borders={{
+            nameErrorBorder,
+            emailErrorBorder,
+            messageErrorBorder,
+          }}
+          showResponse={showResponse}
+          recaptchaRef={recaptchaRef}
+          buttonText={buttonText}
+          buttonClicked={buttonClicked}
+        />
+      </Suspense>
     </div>
   );
 };

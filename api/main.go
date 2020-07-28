@@ -41,11 +41,19 @@ func main() {
 func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	decoder := json.NewDecoder(r.Body)
 	decoder.DisallowUnknownFields()
+	var js []byte
 
 	var data emailData
 	err := decoder.Decode(&data)
 	if err != nil {
-		log.Fatalln(err)
+		js, err = json.Marshal(response{
+			Type:    "error",
+			Message: "Oops! We broke it. Please try again later.",
+		})
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
 	adminEmail, aEExists := os.LookupEnv("ADMIN_EMAIL")
@@ -74,7 +82,6 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	err = smtp.SendMail(mailHost + ":587", auth, adminEmail, to, msg)
 
-	var js []byte
 	if err != nil {
 		log.Println("Failed to send email:", err)
 

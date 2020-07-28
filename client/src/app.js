@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Header from './components/header';
 import Modal from 'react-modal';
 import About from './components/about';
-import Contact from './components/contact';
-import PortfolioList from './components/portfolio_list';
 import { list2016, list2017 } from './utils/portfolio_item_info';
 import modalStyle from './utils/modal_style';
+const Contact = React.lazy(() => import('./components/contact'));
+const PortfolioList = React.lazy(() => import('./components/portfolio_list'));
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,40 +91,42 @@ export default () => {
         </div>
       </article>
 
-      <article className='portfolio' ref={portfolioRef}>
-        <div className='header-container'>
-          <div className='row'>
-            <div className='col-12'>
-              <h1>Portfolio</h1>
-              <a
-                href='https://github.com/Nibor808'
-                target='_blank'
-                rel='noopener noreferrer'
-                data-testid='github-link'
-              >
-                github
-              </a>
+      <Suspense fallback={<div>Loading...</div>}>
+        <article className='portfolio' ref={portfolioRef}>
+          <div className='header-container'>
+            <div className='row'>
+              <div className='col-12'>
+                <h1>Portfolio</h1>
+                <a
+                  href='https://github.com/Nibor808'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  data-testid='github-link'
+                >
+                  github
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className='portfolio-container'>
-          <PortfolioList
-            year='2017'
-            list={list2017}
-            sideBarName='sidebar2017'
-            handleClick={handleClick}
-          />
+          <div className='portfolio-container'>
+            <PortfolioList
+              year='2017'
+              list={list2017}
+              sideBarName='sidebar2017'
+              handleClick={handleClick}
+            />
 
-          <PortfolioList
-            data-testid='2016-list'
-            year='2016'
-            list={list2016}
-            sideBarName='sidebar2016'
-            handleClick={handleClick}
-          />
-        </div>
-      </article>
+            <PortfolioList
+              data-testid='2016-list'
+              year='2016'
+              list={list2016}
+              sideBarName='sidebar2016'
+              handleClick={handleClick}
+            />
+          </div>
+        </article>
+      </Suspense>
 
       <article className='contact' ref={contactRef}>
         <div className='header-container'>
@@ -136,9 +138,11 @@ export default () => {
           </div>
         </div>
 
-        <div className='contact-container'>
-          <Contact />
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className='contact-container'>
+            <Contact />
+          </div>
+        </Suspense>
       </article>
     </section>,
   ];
