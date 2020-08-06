@@ -25,7 +25,7 @@ export const list2017 = [
             target='_blank'
             rel='noopener noreferrer'
           >
-            ODF
+            ODR
           </a>{' '}
           is a service that simplifies the complex process of getting divorced
           or separated in Ontario.
@@ -41,7 +41,7 @@ export const list2017 = [
           downloaded as .docx, or faxed.
         </p>,
         <p key='main3'>
-          ODF features auto-save and resume functionality, the ability to add
+          ODR features auto-save and resume functionality, the ability to add
           and edit a digital signature, editing information that is common to
           all forms in a central location, a graphical interface for setting a
           separate access schedule for each child or one schedule for all
@@ -51,8 +51,9 @@ export const list2017 = [
           sent.
         </p>,
         <p key='main4'>
-          ODR is built on Node JS as a SSR React/Redux monolith with mongoDB and
-          mongoose ODM.
+          ODR is built as a multi container Docker app with a Node JS React/Redux client,
+          Node JS api, an NGINX container routing traffic and utilizing
+          mongoDB and mongoose ODM.
         </p>,
       ];
     },
@@ -178,74 +179,29 @@ export const list2017 = [
 
 export const list2016 = [
   {
-    title: 'Casemon',
-    github: (
-      <a
-        href='https://github.com/Nibor808/casemon-mvp'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        git
-      </a>
-    ),
-    text: () => {
-      return [
-        <p key='main1'>
-          I was engaged by a start up to develop the MVP for a web app that
-          allows attorneys to receive notifications via email or text whenever
-          there"s an update to one of their cases. The production deployment was
-          done by{' '}
-          <a
-            href='https://ryanfunduk.com/'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Ryan Funduk
-          </a>
-          .
-        </p>,
-        <p key='main2'>
-          The MVP was built on Node JS and CoffeeScript for the backend and
-          HTML5, CSS3 and jQuery for the frontend.
-        </p>,
-        <p key='main3'>
-          Unfortunately due to a lack of interest in the product, Casemon is no
-          longer active.
-        </p>,
-      ];
-    },
-    image: () => (
-      <img
-        src={casemon}
-        className='img-fluid'
-        alt='Casemon Landing Page'
-      />
-    ),
-  },
-  {
     title: '+3',
     github: (
-      <a
-        href='https://github.com/Nibor808/plus3'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        git
-      </a>
+        <a
+            href='https://github.com/Nibor808/plus3'
+            target='_blank'
+            rel='noopener noreferrer'
+        >
+          git
+        </a>
     ),
     badgeIcon: (
-      <a
-        href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        <img
-          src={appStoreBadge}
-          id='badge'
-          className='img-fluid'
-          alt='app store badge'
-        />
-      </a>
+        <a
+            href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
+            target='_blank'
+            rel='noopener noreferrer'
+        >
+          <img
+              src={appStoreBadge}
+              id='badge'
+              className='img-fluid'
+              alt='app store badge'
+          />
+        </a>
     ),
     text: () => {
       return [
@@ -264,38 +220,74 @@ export const list2016 = [
     },
     image: handleClick => {
       return (
-        <div className='row'>
-          <div className='col'>
-            <img
-              src={plus3Calc}
-              data-text={plus3Calc}
-              className='img-fluid clickable'
-              alt='+3 Calculator'
-              onClick={ev => handleClick(ev)}
-            />
-          </div>
+          <div className='row'>
+            <div className='col'>
+              <img
+                  src={plus3Calc}
+                  data-text={plus3Calc}
+                  className='img-fluid clickable'
+                  alt='+3 Calculator'
+                  onClick={ev => handleClick(ev)}
+              />
+            </div>
 
-          <div className='col'>
-            <img
-              src={plus3Curr}
-              data-text={plus3Curr}
-              className='img-fluid clickable'
-              alt='+3 Currency Converter'
-              onClick={ev => handleClick(ev)}
-            />
-          </div>
+            <div className='col'>
+              <img
+                  src={plus3Curr}
+                  data-text={plus3Curr}
+                  className='img-fluid clickable'
+                  alt='+3 Currency Converter'
+                  onClick={ev => handleClick(ev)}
+              />
+            </div>
 
-          <div className='col'>
-            <img
-              src={plus3Units}
-              data-text={plus3Units}
-              className='img-fluid clickable'
-              alt='+3 Units Converter'
-              onClick={ev => handleClick(ev)}
-            />
+            <div className='col'>
+              <img
+                  src={plus3Units}
+                  data-text={plus3Units}
+                  className='img-fluid clickable'
+                  alt='+3 Units Converter'
+                  onClick={ev => handleClick(ev)}
+              />
+            </div>
           </div>
-        </div>
       );
     },
+  },
+  {
+    title: 'Casemon',
+    github: (
+      <a
+        href='https://github.com/Nibor808/casemon-mvp'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        git
+      </a>
+    ),
+    text: () => {
+      return [
+        <p key='main1'>
+          I was engaged by a start up to develop the MVP for a web app that
+          allows attorneys to receive notifications via email or text whenever
+          there's an update to one of their cases.
+        </p>,
+        <p key='main2'>
+          The MVP was built on Node JS and CoffeeScript for the backend and
+          HTML5, CSS3 and jQuery for the frontend.
+        </p>,
+        <p key='main3'>
+          Unfortunately due to a lack of interest in the product, Casemon is no
+          longer active.
+        </p>,
+      ];
+    },
+    image: () => (
+      <img
+        src={casemon}
+        className='img-fluid'
+        alt='Casemon Landing Page'
+      />
+    ),
   },
 ];
