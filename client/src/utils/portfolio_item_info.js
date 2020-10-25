@@ -25,7 +25,7 @@ export const list2017 = [
             target='_blank'
             rel='noopener noreferrer'
           >
-            ODR
+            ODF
           </a>{' '}
           is a service that simplifies the complex process of getting divorced
           or separated in Ontario.
@@ -41,7 +41,7 @@ export const list2017 = [
           downloaded as .docx, or faxed.
         </p>,
         <p key='main3'>
-          ODR features auto-save and resume functionality, the ability to add
+          ODF features auto-save and resume functionality, the ability to add
           and edit a digital signature, editing information that is common to
           all forms in a central location, a graphical interface for setting a
           separate access schedule for each child or one schedule for all
@@ -51,7 +51,7 @@ export const list2017 = [
           sent.
         </p>,
         <p key='main4'>
-          ODR is built as a multi container Docker app with a Node JS React/Redux client,
+          ODF is built as a multi container Docker app with a Node JS React/Redux client,
           Node JS api, an NGINX container routing traffic and utilizing
           mongoDB and mongoose ODM.
         </p>,
