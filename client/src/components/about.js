@@ -76,8 +76,8 @@ const STATS = {
 
       <div className='col-sm-10 bottom-box'>
         <p>
-          Currently working in the MERN stack with hobby
-          projects in Swift, Go, Java, and Elixir
+          Currently working in the MERN stack with hobby projects in Swift, Go,
+          Elixir, and Java
         </p>
       </div>
     </div>
