@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   client:
@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
-    - /app/node_modules
-    - ./client:/app
+      - /app/node_modules
+      - ./client:/app
 
   api:
     build:
@@ -28,4 +28,4 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-    - "3050:80"
+      - 3000:80

@@ -26,7 +26,7 @@
       "image": "526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest",
       "hostName": "client",
       "essential": false,
-      "memory":128
+      "memory": 128
     },
     {
       "name": "api",

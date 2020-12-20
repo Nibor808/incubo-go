@@ -80,7 +80,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		data.Message +
 		"\r\n")
 
-	err = smtp.SendMail(mailHost + ":587", auth, adminEmail, to, msg)
+	err = smtp.SendMail(mailHost+":587", auth, adminEmail, to, msg)
 
 	if err != nil {
 		log.Println("Failed to send email:", err)

@@ -10,6 +10,12 @@ export default () => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
+  useEffect(() => {
+    const timeActive = setInterval(getTime, 1000);
+
+    return () => clearInterval(timeActive);
+  });
+
   const getTime = () => {
     const timeSinceStartDate = moment().diff([2016, 0, 1]);
 
@@ -49,12 +55,6 @@ const STATS = {
   const createInfoMarkup = () => {
     return { __html: renderInfoDisplay() };
   };
-
-  useEffect(() => {
-    const timeActive = setInterval(getTime, 1000);
-
-    return () => clearInterval(timeActive);
-  });
 
   return (
     <div className='row'>
