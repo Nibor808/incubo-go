@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../styles/images/incubo_logo.jpg';
+import logo from '../styles/images/incubo_logo.png';
 import linkedIn from '../styles/images/linkedin.jpg';
 
 export default props => {

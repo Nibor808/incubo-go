@@ -1,6 +1,6 @@
 header {
   .navbar {
-    background: $white;
+    background: rgba(255, 255, 255, 0.95);
 
     .navbar-brand {
       padding: 0;
@@ -24,8 +24,16 @@ header {
         button.nav-link {
           padding: 0;
           border: none;
-          background: $white;
+          background: none;
           outline: none;
+          border-left: 1px solid transparent;
+          border-right: 1px solid transparent;
+          padding: 0 10px;
+          &:hover,
+          &:active {
+            border-left: 1px solid $blue;
+            border-right: 1px solid $blue;
+          }
         }
       }
 

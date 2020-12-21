@@ -68,11 +68,6 @@ button.nav-link {
   text-decoration: none;
   color: $blue !important;
   transition: color 0.3s ease-in;
-  &:hover,
-  &:active {
-    text-decoration: none;
-    color: $green !important;
-  }
   &:focus {
     color: $blue !important;
   }
@@ -154,6 +149,38 @@ ul > li {
         .navbar-collapse {
           .nav-item {
             margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header {
+    .navbar {
+      .container {
+        #logo-img {
+          margin: 0;
+        }
+
+        .nav-item:last-child {
+          margin-left: 0;
+          .nav-link {
+            padding: 0;
+          }
+        }
+
+        .navbar-nav > .nav-item {
+          margin: 5px 0;
+
+          button.nav-link {
+            border: none;
+            padding: 0;
+            &:hover,
+            &:active {
+              border: none;
+            }
           }
         }
       }
