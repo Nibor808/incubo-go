@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
+import { MyLink } from '../utils/my_link';
 
 export default () => {
   const [years, setYears] = useState(0);
@@ -76,8 +77,12 @@ const STATS = {
 
       <div className='col-sm-10 bottom-box'>
         <p>
-          Currently working in the MERN stack with hobby projects in Swift, Go,
-          Elixir, and Java
+          Currently working in the{' '}
+          <MyLink
+            title='MERN'
+            href='https://wikitia.com/index.php?title=MERN_(solution_stack)&mobileaction=toggle_view_desktop'
+          />{' '}
+          stack with hobby projects in Swift, Go, Elixir, and Java
         </p>
       </div>
     </div>

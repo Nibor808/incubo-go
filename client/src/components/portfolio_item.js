@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default props => {
-  const { handleClick } = props;
-  const { title, badgeIcon, github, text, image } = props.item;
+export default ({ handleClick, item }) => {
+  const { title, badgeIcon, github, text, image } = item;
 
   return (
     <div className='portfolio-item'>

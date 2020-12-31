@@ -13,6 +13,7 @@ import appStoreBadge from '../styles/images/appstorebadge.svg';
 import plus3Calc from '../styles/images/plus3-calc.jpg';
 import plus3Curr from '../styles/images/plus3-curr.jpg';
 import plus3Units from '../styles/images/plus3-units.jpg';
+import { MyLink } from './my_link';
 
 export const list2017 = [
   {
@@ -20,15 +21,9 @@ export const list2017 = [
     text: () => {
       return [
         <p key='main1'>
-          <a
-            href='https://www.onlinedivorceforms.ca/'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            ODF
-          </a>{' '}
-          is a service that simplifies the complex process of getting divorced
-          or separated in Ontario.
+          <MyLink title='ODF' href='https://www.onlinedivorceforms.ca/' /> is a
+          service that simplifies the complex process of getting divorced or
+          separated in Ontario.
           <small>
             (currently in development and behind an authorization wall - this
             code is not public)
@@ -51,9 +46,9 @@ export const list2017 = [
           sent.
         </p>,
         <p key='main4'>
-          ODF is built as a multi container Docker app with a Node JS React/Redux client,
-          Node JS api, an NGINX container routing traffic and utilizing
-          mongoDB and mongoose ODM.
+          ODF is built as a multi container Docker app with a Node JS
+          React/Redux client, Node JS api, an NGINX container routing traffic
+          and utilizing mongoDB and mongoose ODM.
         </p>,
       ];
     },
@@ -95,15 +90,7 @@ export const list2017 = [
   },
   {
     title: 'JessTech',
-    github: (
-      <a
-        href='https://github.com/Nibor808/jess-blog'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        git
-      </a>
-    ),
+    github: <MyLink title='git' href='https://github.com/Nibor808/jess-blog' />,
     text: () => {
       return [
         <p key='main1'>
@@ -122,11 +109,7 @@ export const list2017 = [
       ];
     },
     image: () => (
-      <img
-        src={jesstech}
-        className='img-fluid'
-        alt='Jesstech Landing Page'
-      />
+      <img src={jesstech} className='img-fluid' alt='Jesstech Landing Page' />
     ),
   },
   {
@@ -151,15 +134,7 @@ export const list2017 = [
   },
   {
     title: 'Incubo Web Solutions',
-    github: (
-      <a
-        href='https://github.com/Nibor808/incubo'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        git
-      </a>
-    ),
+    github: <MyLink title='git' href='https://github.com/Nibor808/incubo' />,
     text: () => (
       <p>
         The old Incubo site. The black and white design was complimented by
@@ -180,28 +155,19 @@ export const list2017 = [
 export const list2016 = [
   {
     title: '+3',
-    github: (
-        <a
-            href='https://github.com/Nibor808/plus3'
-            target='_blank'
-            rel='noopener noreferrer'
-        >
-          git
-        </a>
-    ),
+    github: <MyLink title='git' href='https://github.com/Nibor808/plus3' />,
     badgeIcon: (
-        <a
-            href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
-            target='_blank'
-            rel='noopener noreferrer'
-        >
+      <MyLink
+        title={
           <img
-              src={appStoreBadge}
-              id='badge'
-              className='img-fluid'
-              alt='app store badge'
+            src={appStoreBadge}
+            id='badge'
+            className='img-fluid'
+            alt='app store badge'
           />
-        </a>
+        }
+        href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
+      />
     ),
     text: () => {
       return [
@@ -220,50 +186,44 @@ export const list2016 = [
     },
     image: handleClick => {
       return (
-          <div className='row'>
-            <div className='col'>
-              <img
-                  src={plus3Calc}
-                  data-text={plus3Calc}
-                  className='img-fluid clickable'
-                  alt='+3 Calculator'
-                  onClick={ev => handleClick(ev)}
-              />
-            </div>
-
-            <div className='col'>
-              <img
-                  src={plus3Curr}
-                  data-text={plus3Curr}
-                  className='img-fluid clickable'
-                  alt='+3 Currency Converter'
-                  onClick={ev => handleClick(ev)}
-              />
-            </div>
-
-            <div className='col'>
-              <img
-                  src={plus3Units}
-                  data-text={plus3Units}
-                  className='img-fluid clickable'
-                  alt='+3 Units Converter'
-                  onClick={ev => handleClick(ev)}
-              />
-            </div>
+        <div className='row'>
+          <div className='col'>
+            <img
+              src={plus3Calc}
+              data-text={plus3Calc}
+              className='img-fluid clickable'
+              alt='+3 Calculator'
+              onClick={ev => handleClick(ev)}
+            />
           </div>
+
+          <div className='col'>
+            <img
+              src={plus3Curr}
+              data-text={plus3Curr}
+              className='img-fluid clickable'
+              alt='+3 Currency Converter'
+              onClick={ev => handleClick(ev)}
+            />
+          </div>
+
+          <div className='col'>
+            <img
+              src={plus3Units}
+              data-text={plus3Units}
+              className='img-fluid clickable'
+              alt='+3 Units Converter'
+              onClick={ev => handleClick(ev)}
+            />
+          </div>
+        </div>
       );
     },
   },
   {
     title: 'Casemon',
     github: (
-      <a
-        href='https://github.com/Nibor808/casemon-mvp'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        git
-      </a>
+      <MyLink title='git' href='https://github.com/Nibor808/casemon-mvp' />
     ),
     text: () => {
       return [
@@ -283,11 +243,7 @@ export const list2016 = [
       ];
     },
     image: () => (
-      <img
-        src={casemon}
-        className='img-fluid'
-        alt='Casemon Landing Page'
-      />
+      <img src={casemon} className='img-fluid' alt='Casemon Landing Page' />
     ),
   },
 ];

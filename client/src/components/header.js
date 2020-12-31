@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../styles/images/incubo_logo.png';
 import linkedIn from '../styles/images/linkedin.jpg';
+import { MyLink } from '../utils/my_link';
 
 export default props => {
   const { toPortfolio, toContact } = props;
@@ -56,15 +57,11 @@ export default props => {
               </li>
             </ul>
 
-            <div className='nav-item'>
-              <a
-                className='nav-link'
+            <div className='linkedin'>
+              <MyLink
+                title={<img src={linkedIn} alt='Robin Erickson linkedIn' />}
                 href='https://www.linkedin.com/in/robinerickson08/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <img src={linkedIn} alt='Robin Erickson linkedIn' />
-              </a>
+              />
             </div>
           </div>
         </div>
