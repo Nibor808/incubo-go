@@ -1,4 +1,4 @@
-export default (name, email, message) => {
+const ValidateForm = (name, email, message) => {
   if (!name) return { msg: 'But... what should I call you?', type: 'name' };
 
   if (!email) return { msg: 'How about an email?', type: 'email' };
@@ -13,3 +13,5 @@ export default (name, email, message) => {
       type: 'message',
     };
 };
+
+export default ValidateForm;

@@ -3,7 +3,7 @@ import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
 import { MyLink } from '../utils/my_link';
 
-export default () => {
+const About = () => {
   const [years, setYears] = useState(0);
   const [months, setMonths] = useState(0);
   const [days, setDays] = useState(0);
@@ -88,3 +88,5 @@ const STATS = {
     </div>
   );
 };
+
+export default About;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ handleClick, item }) => {
+const PortfolioItem = ({ handleClick, item }) => {
   const { title, badgeIcon, github, text, image } = item;
 
   return (
@@ -18,3 +18,5 @@ export default ({ handleClick, item }) => {
     </div>
   );
 };
+
+export default PortfolioItem;

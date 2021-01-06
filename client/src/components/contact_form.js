@@ -1,7 +1,7 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-export default props => {
+const ContactForm = props => {
   const {
     sendMail,
     onChange,
@@ -77,3 +77,5 @@ export default props => {
     </div>
   );
 };
+
+export default ContactForm;

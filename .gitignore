@@ -21,5 +21,6 @@
 /client/.env.test.local
 /client/.env.production.local
 /client/npm-debug.log*
+/client/.eslintcache
 *.log
 *.iml

@@ -1,7 +1,7 @@
 import React from 'react';
 import PortfolioItem from './portfolio_item';
 
-export default ({ handleClick, year, list, sideBarName }) => {
+const PortfolioList = ({ handleClick, year, list, sideBarName }) => {
   const klass = `col-sm-2 col-md-1 ${sideBarName}`;
 
   return (
@@ -23,3 +23,5 @@ export default ({ handleClick, year, list, sideBarName }) => {
     </div>
   );
 };
+
+export default PortfolioList;

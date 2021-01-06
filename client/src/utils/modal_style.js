@@ -1,4 +1,4 @@
-export default {
+const ModalStyle = {
   overlay: {
     position: 'fixed',
     zIndex: 9998,
@@ -22,3 +22,5 @@ export default {
     backgroundColor: 'rgb(255,255,255)',
   },
 };
+
+export default ModalStyle;

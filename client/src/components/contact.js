@@ -3,7 +3,7 @@ import validateForm from '../utils/validate_form';
 import axios from 'axios';
 const ContactForm = React.lazy(() => import('./contact_form'));
 
-export default () => {
+const Contact = () => {
   const recaptchaRef = useRef({});
 
   const [name, setName] = useState('');
@@ -134,3 +134,5 @@ export default () => {
     </div>
   );
 };
+
+export default Contact;

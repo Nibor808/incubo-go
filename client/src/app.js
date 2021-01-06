@@ -7,7 +7,7 @@ import PortfolioList from './components/portfolio_list';
 import { list2016, list2017 } from './utils/portfolio_item_info';
 import modalStyle from './utils/modal_style';
 
-export default () => {
+const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [event, setEvent] = useState();
   const portfolioRef = React.createRef();
@@ -143,3 +143,5 @@ export default () => {
     </section>,
   ];
 };
+
+export default App;
