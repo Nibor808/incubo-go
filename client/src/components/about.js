@@ -82,7 +82,7 @@ const STATS = {
             title='MERN'
             href='https://wikitia.com/index.php?title=MERN_(solution_stack)&mobileaction=toggle_view_desktop'
           />{' '}
-          stack with hobby projects in Swift, Go, Elixir, and Java
+          stack with hobby projects in Go, Elixir, and Swift
         </p>
       </div>
     </div>
