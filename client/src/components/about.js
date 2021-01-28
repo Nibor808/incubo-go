@@ -30,7 +30,7 @@ const About = () => {
 
   const renderInfoDisplay = () => {
     return `<pre>
-const STATS = {
+var STATS = {
   "location": {
     "province": "Ontario",
     "country": "Canada",
