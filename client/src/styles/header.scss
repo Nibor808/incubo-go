@@ -22,13 +22,23 @@ header {
           border: none;
           background: none;
           outline: none;
-          border-left: 1px solid transparent;
-          border-right: 1px solid transparent;
           padding: 0 10px;
-          &:hover,
-          &:active {
-            border-left: 1px solid $blue;
-            border-right: 1px solid $blue;
+          position: relative;
+          &:before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            bottom: 0;
+            left: 10px;
+            background: $green;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: 0.25s linear;
+          }
+          &:hover:before {
+            visibility: visible;
+            transform: scaleX(1);
           }
         }
       }

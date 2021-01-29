@@ -90,7 +90,13 @@ export const list2017 = [
   },
   {
     title: 'JessTech',
-    github: <MyLink title='git' href='https://github.com/Nibor808/jess-blog' />,
+    github: (
+      <MyLink
+        title='git'
+        href='https://github.com/Nibor808/jess-blog'
+        klass='git-link'
+      />
+    ),
     text: () => {
       return [
         <p key='main1'>
@@ -134,7 +140,13 @@ export const list2017 = [
   },
   {
     title: 'Incubo Web Solutions',
-    github: <MyLink title='git' href='https://github.com/Nibor808/incubo' />,
+    github: (
+      <MyLink
+        title='git'
+        href='https://github.com/Nibor808/incubo'
+        klass='git-link'
+      />
+    ),
     text: () => (
       <p>
         The old Incubo site. The black and white design was complimented by
@@ -155,7 +167,13 @@ export const list2017 = [
 export const list2016 = [
   {
     title: '+3',
-    github: <MyLink title='git' href='https://github.com/Nibor808/plus3' />,
+    github: (
+      <MyLink
+        title='git'
+        href='https://github.com/Nibor808/plus3'
+        klass='git-link'
+      />
+    ),
     badgeIcon: (
       <MyLink
         title={
@@ -167,6 +185,7 @@ export const list2016 = [
           />
         }
         href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
+        klass='img-link'
       />
     ),
     text: () => {
@@ -223,7 +242,11 @@ export const list2016 = [
   {
     title: 'Casemon',
     github: (
-      <MyLink title='git' href='https://github.com/Nibor808/casemon-mvp' />
+      <MyLink
+        title='git'
+        href='https://github.com/Nibor808/casemon-mvp'
+        klass='git-link'
+      />
     ),
     text: () => {
       return [

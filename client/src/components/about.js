@@ -59,7 +59,7 @@ var STATS = {
 
   return (
     <div className='row'>
-      <div className='col-sm-10 col-xl-8 top-box'>
+      <div className='col-sm-12 col-md-10 col-xl-8 top-box'>
         <div className='img-box'>
           <img
             src={robin}

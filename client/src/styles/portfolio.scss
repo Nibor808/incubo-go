@@ -30,11 +30,6 @@
       .portfolio-item-head {
         display: flex;
         align-items: center;
-
-        a {
-          padding-left: 20px;
-          font-size: 16px;
-        }
       }
 
       img:not(#badge) {
@@ -49,11 +44,5 @@
         margin-bottom: 10px;
       }
     }
-
-    //.items2016 {
-    //  .portfolio-item:last-of-type {
-    //    margin-bottom: 0 !important;
-    //  }
-    //}
   }
 }

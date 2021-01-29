@@ -61,6 +61,7 @@ const Header = props => {
               <MyLink
                 title={<img src={linkedIn} alt='Robin Erickson linkedIn' />}
                 href='https://www.linkedin.com/in/robinerickson08/'
+                klass='img-link'
               />
             </div>
           </div>
