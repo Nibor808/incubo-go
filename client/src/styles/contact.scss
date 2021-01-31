@@ -1,6 +1,7 @@
 .contact {
   .header-container {
     padding: 0;
+
     p:last-of-type {
       margin-bottom: 30px;
     }
@@ -28,8 +29,6 @@
 
       .error {
         color: $red;
-        margin-left: 20px;
-        font-size: 14px;
       }
 
       .send-div {

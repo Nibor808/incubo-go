@@ -5,6 +5,8 @@ const ContactForm = React.lazy(() => import('./contact_form'));
 
 const Contact = () => {
   const recaptchaRef = useRef({});
+  const ERROR_BORDER = '1px solid rgb(211, 0, 57)';
+  const emailForm = document.getElementById('email-form');
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,19 +15,15 @@ const Contact = () => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [messageError, setMessageError] = useState('');
+  const [buttonClicked, setButtonClicked] = useState(false);
   const [nameErrorBorder, setNameErrorBorder] = useState('');
   const [emailErrorBorder, setEmailErrorBorder] = useState('');
   const [messageErrorBorder, setMessageErrorBorder] = useState('');
-  const [buttonClicked, setButtonClicked] = useState(false);
 
   const sendMail = async ev => {
     ev.preventDefault();
 
-    const emailForm = document.getElementById('email-form');
-
     const frmError = validateForm(name, email, message);
-
-    const ERROR_BORDER = '1px solid rgb(211, 0, 57)';
 
     if (frmError) {
       switch (frmError.type) {
@@ -71,8 +69,7 @@ const Contact = () => {
         setResponse({
           data: {
             Type: 'error',
-            Message:
-              'Well this is embarassing. Something went wrong. Please try again later.',
+            Message: 'Oops! We broke it. Please try again later.',
           },
         });
       } finally {
