@@ -23,7 +23,7 @@ const Contact = () => {
 
     const emailForm = document.getElementById('email-form');
 
-    const frmError = await validateForm(name, email, message);
+    const frmError = validateForm(name, email, message);
 
     const ERROR_BORDER = '1px solid rgb(211, 0, 57)';
 
@@ -63,20 +63,28 @@ const Contact = () => {
         recaptchaValue,
       });
 
-      const response = await axios.post('/api/sendmail', info);
+      try {
+        const response = await axios.post('/api/sendmail', info);
 
-      if (response.data.Type === 'ok') {
-        emailForm.reset();
+        setResponse(response);
+      } catch (err) {
+        setResponse({
+          data: {
+            Type: 'error',
+            Message:
+              'Well this is embarassing. Something went wrong. Please try again later.',
+          },
+        });
+      } finally {
         recaptchaRef.current.reset();
         setButtonClicked(false);
+        clearFormValues();
+
+        setTimeout(() => {
+          emailForm.reset();
+          setResponse({});
+        }, 3000);
       }
-
-      setResponse(response);
-      setButtonClicked(false);
-
-      setTimeout(() => {
-        setResponse({});
-      }, 3000);
     }
   };
 
@@ -97,6 +105,12 @@ const Contact = () => {
     setNameErrorBorder('');
     setEmailErrorBorder('');
     setMessageErrorBorder('');
+  };
+
+  const clearFormValues = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   const handleChange = (ev, type) => {
