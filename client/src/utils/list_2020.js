@@ -18,7 +18,7 @@ export const list2020 = [
         </p>,
         <p key='main2'>
           I started to build a web server to learn more about using Go in an actual app.
-          2020 gave me a lot of time to tinker and add features as I became more
+          2020 gave me a lot of time to tinker and add new features as I became more
           comfortable with the language.
         </p>,
         <p key='main3'>
