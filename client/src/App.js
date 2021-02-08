@@ -4,7 +4,9 @@ import Modal from 'react-modal';
 import About from './components/about';
 import Contact from './components/contact';
 import PortfolioList from './components/portfolio_list';
-import { list2016, list2017 } from './utils/portfolio_item_info';
+import { list2016 } from './utils/list_2016';
+import { list2017 } from './utils/list_2017';
+import { list2020 } from './utils/list_2020';
 import modalStyle from './utils/modal_style';
 
 const App = () => {
@@ -110,6 +112,13 @@ const App = () => {
 
         <div className='portfolio-container'>
           <PortfolioList
+            year='2020'
+            list={list2020}
+            sideBarName='sidebar2020'
+            handleClick={handleClick}
+          />
+
+          <PortfolioList
             year='2017'
             list={list2017}
             sideBarName='sidebar2017'
@@ -117,7 +126,6 @@ const App = () => {
           />
 
           <PortfolioList
-            data-testid='2016-list'
             year='2016'
             list={list2016}
             sideBarName='sidebar2016'

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './app';
+import App from './App';
 
 test('renders github link', () => {
   const { getByTestId } = render(<App />);
@@ -12,6 +12,12 @@ test('renders logo image', () => {
   const { getByTestId } = render(<App />);
   const logoImage = getByTestId('logo-img');
   expect(logoImage).toBeInTheDocument();
+});
+
+test('renders 2020 list', () => {
+  const { getByTestId } = render(<App />);
+  const list2020 = getByTestId('2020-list');
+  expect(list2020).toBeInTheDocument();
 });
 
 test('renders 2017 list', () => {

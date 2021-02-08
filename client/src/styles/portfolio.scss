@@ -12,15 +12,21 @@
       margin-bottom: 10px;
     }
 
-    .sidebar2017 {
+    .sidebar2020 {
       @extend .sidebar;
       border-right: 10px solid $blue;
       margin-bottom: 70px;
     }
 
-    .sidebar2016 {
+    .sidebar2017 {
       @extend .sidebar;
       border-right: 10px solid $green;
+      margin-bottom: 70px;
+    }
+
+    .sidebar2016 {
+      @extend .sidebar;
+      border-right: 10px solid $yellow;
     }
 
     .portfolio-item {
