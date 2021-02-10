@@ -1,4 +1,4 @@
-name: CI-Test
+name: Build Test and Deploy
 
 on: [push]
 
@@ -21,6 +21,5 @@ jobs:
 
       - name: Run Tests
         run: docker run incubo-client npm test
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        env:
+          CI: true
