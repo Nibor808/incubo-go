@@ -20,6 +20,4 @@ jobs:
         run: docker build -t incubo-client -f ./client/Dockerfile.dev ./client
 
       - name: Run Tests
-        run: docker run incubo-client npm test
-        env:
-          CI: true
+        run: docker run incubo-client CI=true npm test
