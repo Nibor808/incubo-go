@@ -25,7 +25,6 @@ jobs:
           file: ./Dockerfile.dev
           push: false
           tags: incubo-client
-        run: docker build .
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
