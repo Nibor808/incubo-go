@@ -18,13 +18,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build And Test
-        uses: docker/build-push-action@v2
-        with:
-          context: ./client
-          file: ./Dockerfile.dev
-          push: false
-          tags: incubo-client
+      - name: Build
+        run: docker build -t incubo-client -f ./client/Dockerfile.dev ./client
+
+      - name: Run Tests
+        run: docker run incubo-client npm test
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
