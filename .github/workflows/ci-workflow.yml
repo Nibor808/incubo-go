@@ -16,8 +16,23 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build
+      - name: Build Dev Container For Tests
         run: docker build -t incubo-client -f ./client/Dockerfile.dev ./client
 
       - name: Run Tests
         run: docker run -e CI=true incubo-client npm test
+
+      - name: Build Client and Tag for S3
+        run: |
+          docker build -t incubo-client ./client
+          docker tag incubo-client:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+
+      - name: Build Api and Tag for S3
+        run: |
+          docker build -t incubo-api ./api
+          docker tag incubo-api:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+
+      - name: Build NGINX and Tag for S3
+        run: |
+          docker build -t incubo-nginx ./nginx
+          docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
