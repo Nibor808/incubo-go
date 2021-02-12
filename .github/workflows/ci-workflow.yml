@@ -35,8 +35,8 @@ jobs:
     needs: [send-to-s3]
 
     steps:
-       - name: Checkout Repo
-         uses: actions/checkout@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
       - name: Login to Docker
         uses: docker/login-action@v1
