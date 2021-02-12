@@ -30,36 +30,50 @@ jobs:
       - name: Copy Deployment Package to S3
         run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ secrets.S3_BUCKET_NAME }}/
 
-  # build:
-  #   runs-on: ubuntu-latest
+  run-tests:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v2
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
-  #     - name: Login to Docker
-  #       uses: docker/login-action@v1
-  #       with:
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Login to Docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-  #     - name: Build Dev Container For Tests
-  #       run: docker build -t incubo-client -f ./client/Dockerfile.dev ./client
+      - name: Build Dev Container For Tests
+        run: docker build -t incubo-client -f ./client/Dockerfile.dev ./client
 
-  #     - name: Run Tests
-  #       run: docker run -e CI=true incubo-client npm test
+      - name: Run Tests
+        run: docker run -e CI=true incubo-client npm test
 
-  #     - name: Build Client and Tag for ECR
-  #       run: |
-  #         docker build -t incubo-client ./client
-  #         docker tag incubo-client:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+  build-and-push-to-ecr:
+    runs-on: ubuntu-latest
+    needs: [run-tests]
 
-  #     - name: Build Api and Tag for ECR
-  #       run: |
-  #         docker build -t incubo-api ./api
-  #         docker tag incubo-api:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+    steps:
+      - name: Build Client
+        run: docker build -t incubo-client ./client
 
-  #     - name: Build NGINX and Tag for ECR
-  #       run: |
-  #         docker build -t incubo-nginx ./nginx
-  #         docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
+      - name: Tag Client and push to ECR
+        run: |
+          docker tag incubo-client:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+          docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
+
+      - name: Build API
+        run: docker build -t incubo-api ./api
+
+      - name: Tag API and push to ECR
+        run: |
+          docker tag incubo-api:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+          docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
+
+      - name: Build NGINX and Tag for ECR
+        run: docker build -t incubo-nginx ./nginx
+
+      - name: Tag NGINX and push to ECR
+        run: |
+          docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
+          docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
