@@ -70,26 +70,36 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
-      - name: Build Client
-        run: docker build -t incubo-client ./client
+      - name Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Tag Client and push to ECR
+      - name: Client - Build Tag and Push to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: incubo-client
+          IMAGE_TAG: ${{ github.sha }}
         run: |
+          docker build -t incubo-client ./client
           docker tag incubo-client:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
           docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-client:latest
 
-      - name: Build API
-        run: docker build -t incubo-api ./api
-
-      - name: Tag API and push to ECR
+      - name: API - Build Tag and Push to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: incubo-api
+          IMAGE_TAG: ${{ github.sha }}
         run: |
+          docker build -t incubo-api ./api
           docker tag incubo-api:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
           docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-api:latest
 
-      - name: Build NGINX and Tag for ECR
-        run: docker build -t incubo-nginx ./nginx
-
-      - name: Tag NGINX and push to ECR
+      - name: NGINX - Build Tag and Push to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: incubo-nginx
+          IMAGE_TAG: ${{ github.sha }}
         run: |
+          docker build -t incubo-nginx ./nginx
           docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
           docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
