@@ -111,10 +111,11 @@ jobs:
 
     steps:
       - name: Creat App Version
-        run: aws elasticbeanstalk create-application-version \
+        run: |
+          aws elasticbeanstalk create-application-version \
           --application-name incuboweb \
           --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}", S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
           --version-label "Version-${{ github.sha }}" \
 
-      - name: Deploy NEw Version To Elastic Beanstalk
+      - name: Deploy New Version To Elastic Beanstalk
         run: aws elasticbeanstalk update-environment --environment-name Incuboweb-env --version-label "Version-${{ github.sha }}"
