@@ -106,7 +106,7 @@ jobs:
           docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
 
   create-eb-application-version-and-update:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     needs: [build-and-push-to-ecr]
     env:
       VERSION_LABEL: incuboweb-${{ github.sha }}
