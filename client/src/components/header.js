@@ -55,9 +55,6 @@ const Header = props => {
                   Contact
                 </button>
               </li>
-              <li className='nav-item'>
-                <button className='nav-link'>v2</button>
-              </li>
             </ul>
 
             <div className='linkedin'>
