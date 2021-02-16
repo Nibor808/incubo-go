@@ -1,8 +1,8 @@
 name: Build, Test and Deploy
 
 env:
-  DEPLOY_PACKAGE_NAME: incuboweb-${{ github.sha }}.zip
   AWS_REGION_NAME: ca-central-1
+  DEPLOY_PACKAGE_NAME: incuboweb-${{ github.sha }}.zip
 
 on:
   push:
@@ -104,3 +104,17 @@ jobs:
           docker build -t incubo-nginx ./nginx
           docker tag incubo-nginx:latest 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
           docker push 526452955669.dkr.ecr.ca-central-1.amazonaws.com/incubo-nginx:latest
+
+  create-eb-application-version-and-update:
+    runs-on: ubuntu-latest
+    needs: [build-and-push-to-ecr]
+
+    steps:
+      - name: Creat App Version
+        run: aws elasticbeanstalk create-application-version \
+          --application-name incuboweb \
+          --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}", S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
+          --version-label "Version-${{ github.sha }}" \
+
+      - name: Deploy NEw Version To Elastic Beanstalk
+        run: aws elasticbeanstalk update-environment --environment-name Incuboweb-env --version-label "Version-${{ github.sha }}"
