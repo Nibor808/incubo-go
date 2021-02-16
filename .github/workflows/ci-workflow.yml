@@ -125,7 +125,7 @@ jobs:
           --application-name Incuboweb \
           --version-label "${{ env.VERSION_LABEL }}" \
           --description "IncubowebApp-${{ github.sha }}" \
-          --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}",S3Key="incuboweb" \
+          --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}/incuboweb",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
 
       - name: Deploy New Version To Elastic Beanstalk
         run: aws elasticbeanstalk update-environment --environment-name Incuboweb-env --version-label "${{ env.VERSION_LABEL }}"
