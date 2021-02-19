@@ -17,15 +17,16 @@ export const list2020 = [
           The code is clean and concise with an excellent concurrency model.
         </p>,
         <p key='main2'>
-          I started to build a web server to learn more about using Go in an actual app.
-          2020 gave me a lot of time to tinker and add new features as I became more
-          comfortable with the language.
+          I started to build a web server to learn more about using Go in an
+          actual app. 2020 gave me a lot of time to tinker and add new features
+          as I became more comfortable with the language.
         </p>,
         <p key='main3'>
-          Go Starter is a single container Docker app written in Go with cookie based session
-          verification using JWT signing, and connecting to a MongoDB instance.
-        </p>
-      ]
-    }
+          Go Starter is a multi container Docker app with a React client, a Go
+          api with cookie based session verification using JWT signing, an NGINX
+          container for routing, and connecting to a MongoDB instance.
+        </p>,
+      ];
+    },
   },
-]
+];
