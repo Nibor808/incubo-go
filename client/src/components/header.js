@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import logo from '../styles/images/incubo_logo.png';
 import linkedIn from '../styles/images/linkedin.jpg';
 import { MyLink } from '../utils/my_link';
@@ -6,7 +6,7 @@ import { MyLink } from '../utils/my_link';
 const Header = props => {
   const { toPortfolio, toContact } = props;
 
-  const topRef = React.createRef();
+  const topRef = useRef();
 
   const toTop = ev => {
     ev.preventDefault();

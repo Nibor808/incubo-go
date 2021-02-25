@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Header from './components/header';
 import Modal from 'react-modal';
 import About from './components/about';
@@ -12,8 +12,8 @@ import modalStyle from './utils/modal_style';
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [event, setEvent] = useState();
-  const portfolioRef = React.createRef();
-  const contactRef = React.createRef();
+  const portfolioRef = useRef();
+  const contactRef = useRef();
 
   window.onscroll = () => {
     if (
