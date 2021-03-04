@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from '../styles/images/incubo_logo.png';
 import linkedIn from '../styles/images/linkedin.jpg';
 import { MyLink } from '../utils/my_link';
 
-const Header = props => {
-  const { toPortfolio, toContact } = props;
-
+const Header = ({ toPortfolio, toContact }) => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [modeText, setModeText] = useState('dark');
   const topRef = useRef();
 
   const toTop = ev => {
@@ -17,6 +17,16 @@ const Header = props => {
       });
     }, 50);
   };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      setModeText('light');
+    } else {
+      document.body.classList.remove('dark-mode');
+      setModeText('dark');
+    }
+  }, [darkMode]);
 
   return (
     <header ref={topRef}>
@@ -63,6 +73,21 @@ const Header = props => {
                 href='https://www.linkedin.com/in/robinerickson08/'
                 klass='img-link'
               />
+            </div>
+
+            <div className='custom-control custom-switch'>
+              <input
+                type='checkbox'
+                className='custom-control-input'
+                id='dark-light-toggle'
+                onClick={() => setDarkMode(!darkMode)}
+              />
+              <label
+                className='custom-control-label mode'
+                htmlFor='dark-light-toggle'
+              >
+                {modeText}
+              </label>
             </div>
           </div>
         </div>

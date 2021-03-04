@@ -65,7 +65,7 @@ const App = () => {
           style={modalStyle}
           contentLabel='Nothing'
         >
-          <h4>{event.target.alt}</h4>
+          <h4 className='modal-title'>{event.target.alt}</h4>
 
           <img
             src={event.target.dataset.text}
