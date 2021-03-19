@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import logo from '../styles/images/incubo_logo.png';
 import linkedIn from '../styles/images/linkedin.jpg';
 import { MyLink } from '../utils/my_link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const Header = ({ toPortfolio, toContact }) => {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,10 +23,10 @@ const Header = ({ toPortfolio, toContact }) => {
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');
-      setModeText('light');
+      setModeText(<FontAwesomeIcon icon={faSun} />);
     } else {
       document.body.classList.remove('dark-mode');
-      setModeText('dark');
+      setModeText(<FontAwesomeIcon icon={faMoon} />);
     }
   }, [darkMode]);
 
