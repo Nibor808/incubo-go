@@ -164,16 +164,22 @@ a.git-link {
 @media only screen and (min-width: 320px) and (max-width: 568px) {
   .portfolio {
     .portfolio-container {
-      .sidebar2017 {
+      .sidebar2020 {
         border-right: 0;
         padding-left: 15px;
         border-bottom: 5px solid $blue;
       }
 
-      .sidebar2016 {
+      .sidebar2017 {
         border-right: 0;
         padding-left: 15px;
         border-bottom: 5px solid $green;
+      }
+
+      .sidebar2016 {
+        border-right: 0;
+        padding-left: 15px;
+        border-bottom: 5px solid $yellow;
       }
 
       .portfolio-item {
@@ -255,8 +261,13 @@ a.git-link {
         margin-left: 15px;
 
         .sidebar2016,
-        .sidebar2017 {
+        .sidebar2017,
+        .sidebar2020 {
           padding: 0;
+
+          p {
+            font-size: 20px;
+          }
         }
 
         .portfolio-item {

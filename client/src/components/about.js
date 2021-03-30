@@ -76,14 +76,7 @@ var STATS = {
       </div>
 
       <div className='col-sm-10 bottom-box'>
-        <p>
-          Currently working in the{' '}
-          <MyLink
-            title='MERN'
-            href='https://wikitia.com/index.php?title=MERN_(solution_stack)&mobileaction=toggle_view_desktop'
-          />{' '}
-          stack with hobby projects in Go, Elixir, and Swift
-        </p>
+        <p>Exploring technology one language at a time.</p>
       </div>
     </div>
   );
