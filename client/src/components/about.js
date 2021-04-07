@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
-import { MyLink } from '../utils/my_link';
 
 const About = () => {
   const [years, setYears] = useState(0);
@@ -53,10 +52,6 @@ var STATS = {
       </pre>`;
   };
 
-  const createInfoMarkup = () => {
-    return { __html: renderInfoDisplay() };
-  };
-
   return (
     <div className='row'>
       <div className='col-sm-12 col-md-10 col-xl-8 top-box'>
@@ -72,7 +67,7 @@ var STATS = {
           <p>software developer</p>
         </div>
 
-        <span dangerouslySetInnerHTML={createInfoMarkup()} />
+        <span dangerouslySetInnerHTML={{ __html: renderInfoDisplay() }} />
       </div>
 
       <div className='col-sm-10 bottom-box'>
