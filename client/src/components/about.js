@@ -3,12 +3,14 @@ import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
 
 const About = () => {
-  const [years, setYears] = useState(0);
-  const [months, setMonths] = useState(0);
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [time, setTime] = useState({
+    years: 0,
+    months: 0,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const timeActive = setInterval(getTime, 1000);
@@ -18,13 +20,16 @@ const About = () => {
 
   const getTime = () => {
     const timeSinceStartDate = moment().diff([2016, 0, 1]);
+    const activeTime = moment.duration(timeSinceStartDate);
 
-    setYears(moment.duration(timeSinceStartDate).years());
-    setMonths(moment.duration(timeSinceStartDate).months());
-    setDays(moment.duration(timeSinceStartDate).days());
-    setHours(moment.duration(timeSinceStartDate).hours());
-    setMinutes(moment.duration(timeSinceStartDate).minutes());
-    setSeconds(moment.duration(timeSinceStartDate).seconds());
+    setTime({
+      years: activeTime.years(),
+      months: activeTime.months(),
+      days: activeTime.days(),
+      hours: activeTime.hours(),
+      minutes: activeTime.minutes(),
+      seconds: activeTime.seconds(),
+    });
   };
 
   const renderInfoDisplay = () => {
@@ -35,12 +40,12 @@ var STATS = {
     "country": "Canada",
   },
   "time_active": {
-    "years": ${years},
-    "months": ${months},
-    "days": ${days},
-    "hours": ${hours},
-    "minutes": ${minutes},
-    "seconds": ${seconds},
+    "years": ${time.years},
+    "months": ${time.months},
+    "days": ${time.days},
+    "hours": ${time.hours},
+    "minutes": ${time.minutes},
+    "seconds": ${time.seconds},
   },
   "skills": [
     "problem_solving",
