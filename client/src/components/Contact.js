@@ -32,19 +32,16 @@ const Contact = () => {
       switch (frmError.type) {
         case 'name':
           return setErrors({
-            ...errors,
             nameErrorBorder: ERROR_BORDER,
             nameError: frmError.msg,
           });
         case 'email':
           return setErrors({
-            ...errors,
             emailErrorBorder: ERROR_BORDER,
             emailError: frmError.msg,
           });
         case 'message':
           return setErrors({
-            ...errors,
             messageErrorBorder: ERROR_BORDER,
             messageError: frmError.msg,
           });
@@ -111,7 +108,6 @@ const Contact = () => {
 
   const clearError = () => {
     return setErrors({
-      ...errors,
       nameErrorBorder: '',
       nameError: '',
       emailErrorBorder: '',
