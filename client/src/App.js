@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
-import Header from './components/header';
+import Header from './components/Header';
 import Modal from 'react-modal';
-import About from './components/about';
-import Contact from './components/contact';
-import PortfolioList from './components/portfolio_list';
+import About from './components/About';
+import Contact from './components/Contact';
+import PortfolioList from './components/PortfolioList';
 import { list2016 } from './utils/list_2016';
 import { list2017 } from './utils/list_2017';
 import { list2020 } from './utils/list_2020';

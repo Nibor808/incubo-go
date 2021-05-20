@@ -1,5 +1,5 @@
 import React from 'react';
-import PortfolioItem from './portfolio_item';
+import PortfolioItem from './PortfolioItem';
 
 const PortfolioList = ({ handleClick, year, list, sideBarName }) => {
   const klass = `col-sm-2 col-md-1 ${sideBarName}`;

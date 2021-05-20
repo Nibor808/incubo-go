@@ -3,10 +3,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const ContactForm = props => {
   const {
-    sendMail,
+    validateValues,
     onChange,
     errors,
-    borders,
     showResponse,
     recaptchaRef,
     buttonText,
@@ -18,17 +17,18 @@ const ContactForm = props => {
       <div className='col-1 col-md-1 sidebar' />
 
       <div className='col-sm-8 col-lg-6'>
-        <form onSubmit={sendMail} method='post' id='email-form'>
+        <form onSubmit={validateValues} method='post' id='email-form'>
           <div className='form-group'>
             <label htmlFor='name'>Name</label>
             <span className='error'>{errors.nameError}</span>
+
             <input
               type='text'
               className='form-control'
               id='name'
               name='name'
               onChange={ev => onChange(ev, 'name')}
-              style={{ border: borders.nameErrorBorder }}
+              style={{ border: errors.nameErrorBorder }}
             />
           </div>
 
@@ -41,7 +41,7 @@ const ContactForm = props => {
               id='email'
               name='email'
               onChange={ev => onChange(ev, 'email')}
-              style={{ border: borders.emailErrorBorder }}
+              style={{ border: errors.emailErrorBorder }}
             />
             <small>Your information will never be shared. Full stop.</small>
           </div>
@@ -55,7 +55,7 @@ const ContactForm = props => {
               id='message'
               name='message'
               onChange={ev => onChange(ev, 'message')}
-              style={{ border: borders.messageErrorBorder }}
+              style={{ border: errors.messageErrorBorder }}
             />
           </div>
 
