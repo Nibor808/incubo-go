@@ -3,9 +3,10 @@ import appStoreBadge from '../styles/images/appstorebadge.svg';
 import plus3Calc from '../styles/images/plus3-calc.jpg';
 import plus3Curr from '../styles/images/plus3-curr.jpg';
 import plus3Units from '../styles/images/plus3-units.jpg';
-import { MyLink } from './my_link';
+import { MyLink } from '../components/MyLink';
+import { Item } from '../components/PortfolioItem';
 
-export const list2016 = [
+export const list2016: Item[] = [
   {
     title: '+3',
     github: (
@@ -16,18 +17,19 @@ export const list2016 = [
       />
     ),
     badgeIcon: (
-      <MyLink
-        title={
-          <img
-            src={appStoreBadge}
-            id='badge'
-            className='img-fluid'
-            alt='app store badge'
-          />
-        }
+      <a
         href='https://itunes.apple.com/ca/app/+3/id1095135903?mt=8'
-        klass='img-link'
-      />
+        target={'_blank'}
+        rel='noopener noreferrer'
+        className='img-link'
+      >
+        <img
+          src={appStoreBadge}
+          id='badge'
+          className='img-fluid'
+          alt='app store badge'
+        />
+      </a>
     ),
     text: () => {
       return [

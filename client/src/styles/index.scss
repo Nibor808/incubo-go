@@ -1,19 +1,28 @@
 /* -------------- GLOBALS -------------- */
 $icon-font-path: '/fonts/';
+
+$borderRadius: 3px;
+
 $white: rgb(255, 255, 255);
 $blue: rgb(102, 133, 230);
-$lightBlue: rgb(135,158,229);
+$darkBlue: rgb(78, 105, 184);
+$lightBlue: rgb(135, 158, 229);
 $green: rgb(135, 237, 137);
 $yellow: rgb(238, 219, 81);
 $red: rgb(211, 0, 57);
-$grey: rgb(225, 225, 225);
+
 $fontColor: rgb(51, 51, 51);
 $lightFontColor: rgb(220, 224, 228);
+
 $darkBackground: rgb(53, 58, 61);
+
 $boxShadowSm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 $boxShadowMed: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-$glow: 0 0 8px $green;
-$borderRadius: 0;
+
+$input-grey: rgba(204, 204, 204, 1);
+$input-gradient-white: rgba(247, 247, 248, 1);
+$input-inset-shadow1: rgba(0, 0, 0, 0.2);
+$input-inset-shadow2: rgba(0, 0, 0, 0.05);
 
 @import './custom_bootstrap';
 @import './fonts';
@@ -21,6 +30,7 @@ $borderRadius: 0;
 @import './about';
 @import './portfolio';
 @import './contact';
+@import './buttons_inputs';
 
 /* -------------- FORMATTING -------------- */
 html,
@@ -34,10 +44,14 @@ body {
 }
 
 .container-fluid {
-  padding: 30px 0 0 0;
+  padding: 1.875em 0 0 0;
   position: relative;
   min-height: 100%;
   height: auto !important;
+}
+
+.container {
+  max-width: 1140px;
 }
 
 ul {
@@ -48,9 +62,6 @@ ul {
 .sidebar {
   display: flex;
   justify-content: flex-start;
-  p {
-    font-size: 22px;
-  }
 }
 
 /* -------------- COLORS -------------- */
@@ -65,11 +76,11 @@ h6 {
   -webkit-font-smoothing: antialiased;
 }
 
-#dark-light-toggle:focus ~ .custom-control-label::before {
+#dark-light-toggle:focus {
   box-shadow: none;
 }
 
-#dark-light-toggle:checked ~ .custom-control-label::before {
+#dark-light-toggle:checked {
   border-color: transparent;
   background-color: $green;
 }
@@ -78,6 +89,7 @@ h6 {
   body,
   .container-fluid {
     background: $darkBackground;
+    transition: background 0.5s;
   }
 
   h1,
@@ -87,10 +99,17 @@ h6 {
   h5,
   h6,
   p,
-  label:not(.mode),
+  label:not(.mode-icon),
   pre,
   small,
   ul > li {
+    color: $lightFontColor;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  textarea.form-control {
+    background: $darkBackground;
     color: $lightFontColor;
   }
 
@@ -98,11 +117,16 @@ h6 {
   button.nav-link {
     color: $lightBlue !important;
   }
+
+  .error {
+    color: rgb(253, 131, 109);
+  }
 }
 
 body,
 .container-fluid {
   background: $white;
+  transition: background 0.5s;
 }
 
 h1,
@@ -124,44 +148,33 @@ button.nav-link {
   color: $blue !important;
 }
 
-a:not(.img-link) {
-  padding: 0;
-  border: none;
-  background: none;
-  outline: none;
-  position: relative;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background: $green;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: 0.25s linear;
-  }
-  &:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-  &:hover {
-    text-decoration: none;
-  }
+.error {
+  color: $red;
+  margin-left: 10px;
 }
 
-a.git-link {
-  padding-left: 20px;
-  font-size: 18px;
-  &:before {
-    left: 20px;
-    width: 50%;
-  }
+.success {
+  color: $blue;
 }
 
 /* -------------- MEDIA QUERIES -------------- */
+
+/* up to iPhone 5 landscape = 568px */
 @media only screen and (min-width: 320px) and (max-width: 568px) {
+  html {
+    font-size: 12px;
+  }
+
+  .landing {
+    .about {
+      padding-top: 120px;
+
+      .about-container {
+        padding: 0;
+      }
+    }
+  }
+
   .portfolio {
     .portfolio-container {
       .sidebar2020 {
@@ -189,15 +202,12 @@ a.git-link {
   }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-  .landing {
-    article {
-      p,
-      a {
-        font-size: 16px;
-      }
-    }
+@media only screen and (min-width: 569px) and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
 
+  .landing {
     .about {
       padding-top: 120px;
 
@@ -208,54 +218,9 @@ a.git-link {
   }
 }
 
-@media only screen and (max-width: 812px) {
-  header {
-    justify-content: flex-start;
-
-    .navbar {
-      .container {
-        .nav-item:last-child {
-          margin-left: 0;
-        }
-
-        .navbar-nav > .nav-item {
-          margin-left: 0;
-        }
-
-        .navbar-collapse {
-          .nav-item {
-            margin-top: 10px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  header {
-    .navbar {
-      .container {
-        #logo-img {
-          margin: 0;
-        }
-
-        .linkedin {
-          margin: 5px 0;
-        }
-
-        .navbar-nav > .nav-item {
-          margin: 10px 0;
-        }
-      }
-    }
-  }
-}
-
+/* iPad portrait and iPhone X landscape */
 @media only screen and (min-width: 768px) and (max-width: 812px) {
   .landing {
-    padding-left: 0;
-
     .portfolio {
       .portfolio-container {
         margin-left: 15px;
@@ -288,20 +253,61 @@ a.git-link {
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .contact {
-    padding-bottom: 320px;
+/* up to iPhone X landscape = 812px */
+@media only screen and (max-width: 812px) {
+  header {
+    justify-content: flex-start;
+
+    .navbar {
+      .container {
+        padding: 10px;
+
+        #logo-img {
+          margin: 0;
+        }
+
+        .nav-item:last-child {
+          margin-left: 0;
+        }
+
+        .navbar-nav > .nav-item {
+          margin-left: 0;
+        }
+
+        .navbar-collapse {
+          .nav-item {
+            margin-top: 10px;
+          }
+
+          .linkedin {
+            margin: 10px 0 0 10px;
+          }
+        }
+      }
+    }
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .contact {
-    padding-bottom: 70px;
+    padding-bottom: 280px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .contact {
+    padding-bottom: 40px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .contact {
+    padding-bottom: 160px;
   }
 }
 
 @media only screen and (min-width: 1600px) {
   .contact {
-    padding-bottom: 240px;
+    padding-bottom: 200px;
   }
 }

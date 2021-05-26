@@ -1,7 +1,19 @@
 import React from 'react';
-import PortfolioItem from './PortfolioItem';
+import PortfolioItem, { Item } from './PortfolioItem';
 
-const PortfolioList = ({ handleClick, year, list, sideBarName }) => {
+type PortfolioListProps = {
+  handleClick: React.FormEventHandler;
+  year: string;
+  list: Item[];
+  sideBarName: string;
+};
+
+const PortfolioList = ({
+  handleClick,
+  year,
+  list,
+  sideBarName,
+}: PortfolioListProps) => {
   const klass = `col-sm-2 col-md-1 ${sideBarName}`;
 
   return (
@@ -11,11 +23,10 @@ const PortfolioList = ({ handleClick, year, list, sideBarName }) => {
       </div>
 
       <div className='col-sm-10 col-md-11 portfolio-items'>
-        {list.map((item, index) => (
+        {list.map((item: Item, index: number) => (
           <PortfolioItem
             key={`portfolio-item-${index}`}
             item={item}
-            index={index}
             handleClick={handleClick}
           />
         ))}

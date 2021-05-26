@@ -1,9 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import robin from '../styles/images/robin.jpg';
 
+type TimeVals = {
+  years: number;
+  months: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
 const About = () => {
-  const [time, setTime] = useState({
+  const [time, setTime] = useState<TimeVals>({
     years: 0,
     months: 0,
     days: 0,

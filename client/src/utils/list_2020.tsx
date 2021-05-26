@@ -1,6 +1,7 @@
-import { MyLink } from './my_link';
+import { MyLink } from '../components/MyLink';
+import { Item } from '../components/PortfolioItem';
 
-export const list2020 = [
+export const list2020: Item[] = [
   {
     title: 'Go Starter',
     github: (

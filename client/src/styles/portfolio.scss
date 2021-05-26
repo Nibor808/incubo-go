@@ -49,6 +49,15 @@
       #badge {
         margin-bottom: 10px;
       }
+
+      a.git-link {
+        padding-left: 20px;
+        text-decoration: none;
+        &:before {
+          left: 20px;
+          width: 50%;
+        }
+      }
     }
   }
 }
