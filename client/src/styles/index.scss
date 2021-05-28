@@ -160,7 +160,7 @@ button.nav-link {
 /* -------------- MEDIA QUERIES -------------- */
 
 /* up to iPhone 5 landscape */
-@media only screen and (min-width: 320px) and (max-width: 568px) {
+@media screen and (min-width: 320px) and (max-width: 568px) {
   html {
     font-size: 12px;
   }
@@ -202,7 +202,7 @@ button.nav-link {
   }
 }
 
-@media only screen and (min-width: 569px) and (max-width: 767px) {
+@media screen and (min-width: 569px) and (max-width: 767px) {
   html {
     font-size: 14px;
   }
@@ -219,7 +219,7 @@ button.nav-link {
 }
 
 /* iPad portrait and iPhone X landscape */
-@media only screen and (min-width: 768px) and (max-width: 812px) {
+@media screen and (min-width: 768px) and (max-width: 812px) {
   .landing {
     .portfolio {
       .portfolio-container {
@@ -254,7 +254,7 @@ button.nav-link {
 }
 
 /* up to iPhone X landscape = 812px */
-@media only screen and (max-width: 812px) {
+@media screen and (max-width: 812px) {
   header {
     justify-content: flex-start;
 
@@ -288,33 +288,45 @@ button.nav-link {
   }
 }
 
-@media not all and (min-resolution: .001dpcm) and (min-width: 768px) {
-  @supports (-webkit-appearance: none) {
-    .contact {
-      padding-bottom: 340px;
-    }
+@media screen and (min-width: 360px) {
+  .contact {
+    padding-bottom: 20px;
   }
 }
 
-@media not all and (min-resolution: .001dpcm) and (min-width: 1024px) {
-  @supports (-webkit-appearance: none) {
-    .contact {
-      padding-bottom: 40px;
-    }
-
-    .mode-icon {
-      margin-right: 8px;
-    }
+@media screen and (min-width: 768px) {
+  .contact {
+    padding-bottom: 280px;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media screen and (min-width: 1024px) {
+  .contact {
+    padding-bottom: 40px;
+  }
+
+  .mode-icon {
+    margin-right: 8px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .contact {
+    padding-bottom: 65px;
+  }
+
+  .mode-icon {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   .contact {
     padding-bottom: 160px;
   }
 }
 
-@media only screen and (min-width: 1600px) {
+@media screen and (min-width: 1600px) {
   .contact {
     padding-bottom: 200px;
   }
