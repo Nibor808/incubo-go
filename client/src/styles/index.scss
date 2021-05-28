@@ -288,21 +288,23 @@ button.nav-link {
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .contact {
-    padding-bottom: 280px;
+@media not all and (min-resolution: .001dpcm) and (min-width: 768px) {
+  @supports (-webkit-appearance: none) {
+    .contact {
+      padding-bottom: 340px;
+    }
   }
 }
 
-@media only screen and (width: 1024px) {
-  .mode-icon {
-    margin-right: 8px;
-  }
-}
+@media not all and (min-resolution: .001dpcm) and (min-width: 1024px) {
+  @supports (-webkit-appearance: none) {
+    .contact {
+      padding-bottom: 40px;
+    }
 
-@media only screen and (min-width: 1024px) and (max-width: 1280px) {
-  .contact {
-    padding-bottom: 40px;
+    .mode-icon {
+      margin-right: 8px;
+    }
   }
 }
 
