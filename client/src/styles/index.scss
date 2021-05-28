@@ -310,6 +310,13 @@ button.nav-link {
   }
 }
 
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .contact {
+    padding-bottom: 30px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .contact {
     padding-bottom: 30px;
@@ -323,13 +330,6 @@ button.nav-link {
 @media screen and (min-width: 1600px) {
   .contact {
     padding-bottom: 210px;
-  }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) and (min-width: 1280px) {
-  .contact {
-    padding-bottom: 30px;
   }
 }
 
