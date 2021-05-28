@@ -327,7 +327,7 @@ button.nav-link {
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
+(min-resolution: 192dpi) and (min-width: 1280px) {
   .contact {
     padding-bottom: 30px;
   }
