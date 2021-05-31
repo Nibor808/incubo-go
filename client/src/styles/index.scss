@@ -315,6 +315,18 @@ button.nav-link {
   .contact {
     padding-bottom: 30px;
   }
+
+  @media screen and (min-width: 768px) {
+    .contact {
+      padding-bottom: 290px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .contact {
+      padding-bottom: 0;
+    }
+  }
 }
 
 @media screen and (min-width: 1280px) {
