@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../styles/images/incubo_logo.png';
+import logoSm from '../styles/images/incubo_logo_sm.png';
 import linkedIn from '../styles/images/linkedin.jpg';
 import { MyLink } from './MyLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +17,8 @@ const Header = ({ toPortfolio, toContact, toTop }: HeaderProps) => {
   const [modeIcon, setModeIcon] = useState<JSX.Element>(
     <FontAwesomeIcon icon={faSun} />
   );
+  const width = window.innerWidth;
+  const logoImg = width < 768 ? logoSm : logo;
 
   useEffect(() => {
     if (darkMode) {
@@ -34,7 +37,7 @@ const Header = ({ toPortfolio, toContact, toTop }: HeaderProps) => {
           <img
             id='logo-img'
             data-testid='logo-img'
-            src={logo}
+            src={logoImg}
             alt='incubo web solutions logo'
             className='img-fluid navbar-brand'
             onClick={toTop}

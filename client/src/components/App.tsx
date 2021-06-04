@@ -23,14 +23,26 @@ const App: React.FC = () => {
   }, []);
 
   window.onscroll = () => {
+    const width = window.innerWidth;
+
     if (logoImg) {
       if (
         document.body.scrollTop > 30 ||
         document.documentElement.scrollTop > 30
       ) {
-        logoImg.style.height = '80px';
-        logoImg.style.width = '185px';
+
+        if (width < 768) {
+          logoImg.style.height = '70px';
+          logoImg.style.width = '165px';
+        } else {
+          logoImg.style.height = '80px';
+          logoImg.style.width = '185px';
+        }
+
         logoImg.style.transition = '0.4s';
+      } else if (width < 768) {
+        logoImg.style.height = '85px';
+        logoImg.style.width = '200px';
       } else {
         logoImg.style.height = '110px';
         logoImg.style.width = '258px';
