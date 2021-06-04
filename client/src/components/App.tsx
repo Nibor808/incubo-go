@@ -30,6 +30,7 @@ const App: React.FC = () => {
         document.body.scrollTop > 30 ||
         document.documentElement.scrollTop > 30
       ) {
+        document.body.classList.add('nav-shadow');
 
         if (width < 768) {
           logoImg.style.height = '70px';
@@ -43,9 +44,11 @@ const App: React.FC = () => {
       } else if (width < 768) {
         logoImg.style.height = '85px';
         logoImg.style.width = '200px';
+        document.body.classList.remove('nav-shadow');
       } else {
         logoImg.style.height = '110px';
         logoImg.style.width = '258px';
+        document.body.classList.remove('nav-shadow');
       }
     }
   };

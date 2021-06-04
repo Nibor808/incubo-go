@@ -157,6 +157,12 @@ button.nav-link {
   color: $blue;
 }
 
+.nav-shadow {
+  .navbar {
+    box-shadow: $boxShadowMed;
+  }
+}
+
 /* -------------- MEDIA QUERIES -------------- */
 
 /* up to iPhone 5 landscape */
@@ -340,7 +346,7 @@ button.nav-link {
 
 @media screen and (min-width: 1600px) {
   .contact {
-    padding-bottom: 210px;
+    padding-bottom: 200px;
   }
 }
 
