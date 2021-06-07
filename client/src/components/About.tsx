@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import robin from '../styles/images/robin.jpg';
+import robin from '../styles/images/robin-head.jpeg';
 
 type TimeVals = {
   years: number;
