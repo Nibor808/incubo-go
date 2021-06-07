@@ -69,7 +69,7 @@ const ContactForm = ({
           </div>
 
           <div className='mb-3'>
-            <label htmlFor='description' className='form-label'>
+            <label htmlFor='message' className='form-label'>
               Message
             </label>
             <span className='error'>{errors.messageError}</span>

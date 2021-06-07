@@ -5,6 +5,7 @@ $borderRadius: 3px;
 
 $white: rgb(255, 255, 255);
 $blue: rgb(102, 133, 230);
+$blueText: rgb(65, 85, 148);
 $darkBlue: rgb(78, 105, 184);
 $lightBlue: rgb(135, 158, 229);
 $green: rgb(135, 237, 137);
@@ -113,8 +114,7 @@ h6 {
     color: $lightFontColor;
   }
 
-  a,
-  button.nav-link {
+  a {
     color: $lightBlue !important;
   }
 
@@ -145,7 +145,7 @@ ul > li {
 
 a,
 button.nav-link {
-  color: $blue !important;
+  color: $blueText !important;
 }
 
 .error {

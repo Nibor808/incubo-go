@@ -59,6 +59,7 @@ const Header = ({ toPortfolio, toContact, toTop }: HeaderProps) => {
             <ul className='navbar-nav mr-auto'>
               <li className='nav-item'>
                 <button
+                  type='button'
                   className='nav-link'
                   onClick={toPortfolio}
                   data-testid='portfolio-link'
@@ -68,6 +69,7 @@ const Header = ({ toPortfolio, toContact, toTop }: HeaderProps) => {
               </li>
               <li className='nav-item'>
                 <button
+                  type='button'
                   className='nav-link'
                   onClick={toContact}
                   data-testid='contact-link'
