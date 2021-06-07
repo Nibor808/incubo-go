@@ -181,6 +181,17 @@ button.nav-link {
     }
   }
 
+  header {
+    .navbar {
+      .container {
+        .navbar-toggler {
+          padding: 5px 15px;
+        }
+      }
+    }
+  }
+
+
   .portfolio {
     .portfolio-container {
       .sidebar2020 {
