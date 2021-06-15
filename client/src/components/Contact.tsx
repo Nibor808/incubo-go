@@ -124,9 +124,10 @@ const Contact = () => {
         message,
       };
 
+      setIsSending(true);
+      
       try {
         const response = await axios.post('/api/sendmail', info);
-        setIsSending(true);
 
         setResponse(response);
       } catch (err) {
