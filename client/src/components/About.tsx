@@ -25,7 +25,7 @@ const About = () => {
         const timeActive = setInterval(getTime, 1000);
 
         return () => clearInterval(timeActive);
-    });
+    }, []);
 
     const getTime = () => {
         const timeSinceStartDate = moment().diff([2016, 0, 1]);

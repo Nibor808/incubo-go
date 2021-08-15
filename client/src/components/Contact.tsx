@@ -6,17 +6,31 @@ import ErrorBoundary from './ErrorBoundary';
 
 const ContactForm = React.lazy(() => import('./ContactForm'));
 
+enum ResponseDataType {
+    DEFAULT = '',
+    OK = 'ok',
+    ERROR = 'error',
+}
+
 type Response = {
     data: {
-        Type: string;
+        Type: ResponseDataType;
         Message: string;
     };
 };
 
-export type MailInfo = {
-    name: string;
-    email: string;
-    message: string;
+enum MailInfoType {
+    DEFAULT = '',
+    NAME = 'name',
+    EMAIL = 'email',
+    MESSAGE = 'message',
+    CAPTCHA = 'captcha',
+}
+
+type MailInfo = {
+    name: MailInfoType;
+    email: MailInfoType;
+    message: MailInfoType;
 };
 
 export type FormError = {
@@ -39,11 +53,11 @@ const Contact = () => {
     const ERROR_BORDER = '1px solid rgb(211, 0, 57)';
     const contactForm = document.getElementById('contact-form') as HTMLFormElement;
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const [name, setName] = useState<MailInfoType>(MailInfoType.DEFAULT);
+    const [email, setEmail] = useState<MailInfoType>(MailInfoType.DEFAULT);
+    const [message, setMessage] = useState<MailInfoType>(MailInfoType.DEFAULT);
     const [response, setResponse] = useState<Response>({
-        data: {Message: '', Type: ''},
+        data: {Message: '', Type: ResponseDataType.DEFAULT},
     });
     const [errors, setErrors] = useState<Errors>({
         nameError: '',
@@ -65,7 +79,7 @@ const Contact = () => {
 
         if (formError) {
             switch (formError.type) {
-                case 'name':
+                case MailInfoType.NAME:
                     setErrors({
                         ...errors,
                         nameErrorBorder: ERROR_BORDER,
@@ -73,7 +87,7 @@ const Contact = () => {
                     });
 
                     return false;
-                case 'email':
+                case MailInfoType.EMAIL:
                     setErrors({
                         ...errors,
                         emailErrorBorder: ERROR_BORDER,
@@ -81,7 +95,7 @@ const Contact = () => {
                     });
 
                     return false;
-                case 'message':
+                case MailInfoType.MESSAGE:
                     setErrors({
                         ...errors,
                         messageErrorBorder: ERROR_BORDER,
@@ -90,7 +104,7 @@ const Contact = () => {
 
                     return false;
 
-                case 'captcha':
+                case MailInfoType.CAPTCHA:
                     setErrors({
                         ...errors,
                         captchaError: formError.msg,
@@ -102,7 +116,7 @@ const Contact = () => {
             }
         }
 
-        setResponse({data: {Message: '', Type: ''}});
+        setResponse({data: {Message: '', Type: ResponseDataType.DEFAULT}});
         clearErrors();
         return true;
     };
@@ -126,34 +140,36 @@ const Contact = () => {
             } catch (err) {
                 setResponse({
                     data: {
-                        Type: 'error',
+                        Type: ResponseDataType.ERROR,
                         Message: 'Oops! We broke it. Please try again later.',
                     },
                 });
             } finally {
                 recaptchaRef.current?.reset();
                 setIsSending(false);
-                clearFormValues();
+                setName(MailInfoType.DEFAULT);
+                setEmail(MailInfoType.DEFAULT);
+                setMessage(MailInfoType.DEFAULT);
 
                 setTimeout(() => {
                     contactForm?.reset();
-                    setResponse({data: {Message: '', Type: ''}});
+                    setResponse({data: {Message: '', Type: ResponseDataType.DEFAULT}});
                 }, 3000);
             }
         }
     };
 
-    const showResponse = () => {
+    const showResponse = React.useCallback(() => {
         let klass;
 
         if (response.data) {
-            klass = response.data.Type === 'ok' ? 'success' : 'error';
+            klass = response.data.Type === ResponseDataType.OK ? 'success' : 'error';
 
             return <p className={klass}>{response.data.Message}</p>;
         }
 
         return null;
-    };
+    }, [response]);
 
     const clearErrors = () => {
         return setErrors({
@@ -167,19 +183,13 @@ const Contact = () => {
         });
     };
 
-    const clearFormValues = () => {
-        setName('');
-        setEmail('');
-        setMessage('');
-    };
-
     const handleChange = (
         ev: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
         type: string
     ) => {
-        if (type === 'name') setName(ev.target.value);
-        else if (type === 'email') setEmail(ev.target.value);
-        else if (type === 'message') setMessage(ev.target.value);
+        if (type === MailInfoType.NAME) setName(ev.target.value as MailInfoType);
+        else if (type === MailInfoType.EMAIL) setEmail(ev.target.value as MailInfoType);
+        else if (type === MailInfoType.MESSAGE) setMessage(ev.target.value as MailInfoType);
 
         clearErrors();
     };
@@ -205,4 +215,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default React.memo(Contact);

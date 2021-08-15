@@ -47,15 +47,15 @@ const App: React.FC = () => {
         }
     };
 
-    const toTop = (ev: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    const toTop = React.useCallback((ev: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         ev.preventDefault();
 
         setTimeout(() => {
             window.scrollTo(0, 0);
         }, 50);
-    };
+    }, []);
 
-    const toPortfolio = (ev: React.MouseEvent<HTMLButtonElement>) => {
+    const toPortfolio = React.useCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
         ev.preventDefault();
 
         setTimeout(() => {
@@ -63,9 +63,9 @@ const App: React.FC = () => {
                 behavior: 'smooth',
             });
         }, 75);
-    };
+    }, []);
 
-    const toContact = (ev: React.MouseEvent<HTMLButtonElement>) => {
+    const toContact = React.useCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
         ev.preventDefault();
 
         setTimeout(() => {
@@ -73,7 +73,7 @@ const App: React.FC = () => {
                 behavior: 'smooth',
             });
         }, 75);
-    };
+    }, []);
 
     const handleClick = (ev: React.MouseEvent<HTMLImageElement>) => {
         setIsOpen(true);
@@ -81,7 +81,7 @@ const App: React.FC = () => {
         setEvent(ev);
     };
 
-    const showModal = (): JSX.Element | null => {
+    const showModal = React.useCallback((): JSX.Element | null => {
         const target = event?.target as HTMLImageElement;
 
         return isOpen ? (
@@ -94,7 +94,7 @@ const App: React.FC = () => {
                 />
             </span>
         ) : null;
-    };
+    }, [isOpen, event?.target]);
 
     return (
         <React.Fragment>
