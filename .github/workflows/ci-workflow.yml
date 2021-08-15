@@ -128,4 +128,4 @@ jobs:
           --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}",S3Key="incubo/${{ env.DEPLOY_PACKAGE_NAME }}"
 
       - name: Deploy New Version To Elastic Beanstalk
-        run: aws elasticbeanstalk update-environment --environment-name incubo-env --version-label "${{ env.VERSION_LABEL }}"
+        run: aws elasticbeanstalk update-environment --environment-name incubotest-env --version-label "${{ env.VERSION_LABEL }}"
