@@ -1,6 +1,10 @@
 {
-  "trailingComma": "es5",
-  "singleQuote": true,
-  "jsxSingleQuote": true,
-  "arrowParens": "avoid"
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always",
+    "printWidth": 100,
+    "tabWidth": 4,
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true,
+    "parser": "typescript"
 }
