@@ -36,33 +36,33 @@ $input-inset-shadow2: rgba(0, 0, 0, 0.05);
 /* -------------- FORMATTING -------------- */
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .container-fluid {
-  padding: 1.875em 0 0 0;
-  position: relative;
-  min-height: 100%;
-  height: auto !important;
+    padding: 1.875em 0 0 0;
+    position: relative;
+    min-height: 100%;
+    height: auto !important;
 }
 
 .container {
-  max-width: 1140px;
+    max-width: 1140px;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .sidebar {
-  display: flex;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* -------------- COLORS -------------- */
@@ -73,60 +73,60 @@ h3,
 h4,
 h5,
 h6 {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 #dark-light-toggle:focus {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 #dark-light-toggle:checked {
-  border-color: transparent;
-  background-color: $green;
+    border-color: transparent;
+    background-color: $green;
 }
 
 .dark-mode {
-  body,
-  .container-fluid {
-    background: $darkBackground;
-    transition: background 0.5s;
-  }
+    body,
+    .container-fluid {
+        background: $darkBackground;
+        transition: background 0.5s;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4:not(.modal-title),
-  h5,
-  h6,
-  p,
-  label:not(.mode-icon),
-  pre,
-  small,
-  ul > li {
-    color: $lightFontColor;
-  }
+    h1,
+    h2,
+    h3,
+    h4:not(.modal-title),
+    h5,
+    h6,
+    p,
+    label:not(.mode-icon),
+    pre,
+    small,
+    ul > li {
+        color: $lightFontColor;
+    }
 
-  input[type='text'],
-  input[type='email'],
-  textarea.form-control {
-    background: $darkBackground;
-    color: $lightFontColor;
-  }
+    input[type='text'],
+    input[type='email'],
+    textarea.form-control {
+        background: $darkBackground;
+        color: $lightFontColor;
+    }
 
-  a {
-    color: $lightBlue !important;
-  }
+    a {
+        color: $lightBlue !important;
+    }
 
-  .error {
-    color: rgb(253, 131, 109);
-  }
+    .error {
+        color: rgb(253, 131, 109);
+    }
 }
 
 body,
 .container-fluid {
-  background: $white;
-  transition: background 0.5s;
+    background: $white;
+    transition: background 0.5s;
 }
 
 h1,
@@ -140,224 +140,221 @@ label,
 pre,
 small,
 ul > li {
-  color: $fontColor;
+    color: $fontColor;
 }
 
 a,
 button.nav-link {
-  color: $blueText !important;
+    color: $blueText !important;
 }
 
 .error {
-  color: $red;
-  margin-left: 10px;
+    color: $red;
+    margin-left: 10px;
 }
 
 .success {
-  color: $blue;
+    color: $blue;
 }
 
 .nav-shadow {
-  .navbar {
-    box-shadow: $boxShadowMed;
-  }
+    .navbar {
+        box-shadow: $boxShadowMed;
+    }
 }
 
 /* -------------- MEDIA QUERIES -------------- */
 
 /* up to iPhone 5 landscape */
 @media screen and (min-width: 320px) and (max-width: 568px) {
-  html {
-    font-size: 12px;
-  }
-
-  .landing {
-    .about {
-      padding-top: 120px;
-
-      .about-container {
-        padding: 0;
-      }
+    html {
+        font-size: 12px;
     }
-  }
 
-  header {
-    .navbar {
-      .container {
-        .navbar-toggler {
-          padding: 5px 15px;
+    .landing {
+        .about {
+            padding-top: 120px;
+
+            .about-container {
+                padding: 0;
+            }
         }
-      }
     }
-  }
 
-
-  .portfolio {
-    .portfolio-container {
-      .sidebar2020 {
-        border-right: 0;
-        padding-left: 15px;
-        border-bottom: 5px solid $blue;
-      }
-
-      .sidebar2017 {
-        border-right: 0;
-        padding-left: 15px;
-        border-bottom: 5px solid $green;
-      }
-
-      .sidebar2016 {
-        border-right: 0;
-        padding-left: 15px;
-        border-bottom: 5px solid $yellow;
-      }
-
-      .portfolio-item {
-        margin-left: 0;
-      }
+    header {
+        .navbar {
+            .container {
+                .navbar-toggler {
+                    padding: 5px 15px;
+                }
+            }
+        }
     }
-  }
+
+    .portfolio {
+        .portfolio-container {
+            .sidebar2020 {
+                border-right: 0;
+                padding-left: 15px;
+                border-bottom: 5px solid $blue;
+            }
+
+            .sidebar2017 {
+                border-right: 0;
+                padding-left: 15px;
+                border-bottom: 5px solid $green;
+            }
+
+            .sidebar2016 {
+                border-right: 0;
+                padding-left: 15px;
+                border-bottom: 5px solid $yellow;
+            }
+
+            .portfolio-item {
+                margin-left: 0;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 569px) and (max-width: 767px) {
-  html {
-    font-size: 14px;
-  }
-
-  .landing {
-    .about {
-      padding-top: 120px;
-
-      .about-container {
-        padding: 0;
-      }
+    html {
+        font-size: 14px;
     }
-  }
+
+    .landing {
+        .about {
+            padding-top: 120px;
+
+            .about-container {
+                padding: 0;
+            }
+        }
+    }
 }
 
 /* iPad portrait and iPhone X landscape */
 @media screen and (min-width: 768px) and (max-width: 812px) {
-  .landing {
-    .portfolio {
-      .portfolio-container {
-        margin-left: 15px;
+    .landing {
+        .portfolio {
+            .portfolio-container {
+                margin-left: 15px;
 
-        .sidebar2016,
-        .sidebar2017,
-        .sidebar2020 {
-          padding: 0;
+                .sidebar2016,
+                .sidebar2017,
+                .sidebar2020 {
+                    padding: 0;
 
-          p {
-            font-size: 20px;
-          }
+                    p {
+                        font-size: 20px;
+                    }
+                }
+
+                .portfolio-item {
+                    margin-left: 0;
+                }
+            }
         }
 
-        .portfolio-item {
-          margin-left: 0;
+        .contact {
+            .contact-container {
+                margin-left: 15px;
+
+                .sidebar {
+                    padding: 0;
+                }
+            }
         }
-      }
     }
-
-    .contact {
-      .contact-container {
-        margin-left: 15px;
-
-        .sidebar {
-          padding: 0;
-        }
-      }
-    }
-  }
 }
 
 /* up to iPhone X landscape = 812px */
 @media screen and (max-width: 812px) {
-  header {
-    .navbar {
-      .container {
-        padding: 10px;
-        align-items: flex-start;
+    header {
+        .navbar {
+            .container {
+                padding: 10px;
+                align-items: flex-start;
 
-        #logo-img {
-          margin: 0;
+                #logo-img {
+                    margin: 0;
+                }
+
+                .nav-item:last-child {
+                    margin-left: 0;
+                }
+
+                .navbar-nav > .nav-item {
+                    margin-left: 0;
+                }
+
+                .navbar-collapse {
+                    .nav-item {
+                        margin-top: 10px;
+                    }
+
+                    .linkedin {
+                        margin: 10px 0 0 10px;
+                    }
+                }
+            }
         }
-
-        .nav-item:last-child {
-          margin-left: 0;
-        }
-
-        .navbar-nav > .nav-item {
-          margin-left: 0;
-        }
-
-        .navbar-collapse {
-          .nav-item {
-            margin-top: 10px;
-          }
-
-          .linkedin {
-            margin: 10px 0 0 10px;
-          }
-        }
-      }
     }
-  }
 }
 
 @media screen and (min-width: 360px) {
-  .contact {
-    padding-bottom: 20px;
-  }
+    .contact {
+        padding-bottom: 20px;
+    }
 }
 
 @media screen and (min-width: 768px) {
-  .contact {
-    padding-bottom: 240px;
-  }
+    .contact {
+        padding-bottom: 240px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
-  .contact {
-    padding-bottom: 0;
-  }
+    .contact {
+        padding-bottom: 0;
+    }
 
-  .mode-icon {
-    margin-right: 8px;
-  }
+    .mode-icon {
+        margin-right: 8px;
+    }
 }
 
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  .contact {
-    padding-bottom: 30px;
-  }
-
-  @media screen and (min-width: 768px) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .contact {
-      padding-bottom: 250px;
+        padding-bottom: 30px;
     }
-  }
 
-  @media screen and (min-width: 1024px) {
-    .contact {
-      padding-bottom: 0;
+    @media screen and (min-width: 768px) {
+        .contact {
+            padding-bottom: 250px;
+        }
     }
-  }
+
+    @media screen and (min-width: 1024px) {
+        .contact {
+            padding-bottom: 0;
+        }
+    }
 }
 
 @media screen and (min-width: 1280px) {
-  .contact {
-    padding-bottom: 30px;
-  }
+    .contact {
+        padding-bottom: 30px;
+    }
 
-  .mode-icon {
-    margin-right: 0;
-  }
+    .mode-icon {
+        margin-right: 0;
+    }
 }
 
 @media screen and (min-width: 1600px) {
-  .contact {
-    padding-bottom: 200px;
-  }
+    .contact {
+        padding-bottom: 200px;
+    }
 }
-

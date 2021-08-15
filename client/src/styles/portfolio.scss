@@ -1,63 +1,63 @@
 .portfolio {
-  padding: 120px 0 100px 0;
+    padding: 120px 0 100px 0;
 
-  .header-container {
-    padding: 0;
-  }
-
-  .portfolio-container {
-    margin-top: 40px;
-
-    .row:last-of-type > .portfolio-items > .portfolio-item:last-of-type {
-      margin-bottom: 10px;
+    .header-container {
+        padding: 0;
     }
 
-    .sidebar2020 {
-      @extend .sidebar;
-      border-right: 10px solid $blue;
-      margin-bottom: 70px;
-    }
+    .portfolio-container {
+        margin-top: 40px;
 
-    .sidebar2017 {
-      @extend .sidebar;
-      border-right: 10px solid $green;
-      margin-bottom: 70px;
-    }
-
-    .sidebar2016 {
-      @extend .sidebar;
-      border-right: 10px solid $yellow;
-    }
-
-    .portfolio-item {
-      margin-bottom: 80px;
-      margin-left: 20px;
-
-      .portfolio-item-head {
-        display: flex;
-        align-items: center;
-      }
-
-      img:not(#badge) {
-        box-shadow: $boxShadowSm;
-
-        &.clickable {
-          cursor: pointer;
+        .row:last-of-type > .portfolio-items > .portfolio-item:last-of-type {
+            margin-bottom: 10px;
         }
-      }
 
-      #badge {
-        margin-bottom: 10px;
-      }
-
-      a.git-link {
-        padding-left: 20px;
-        text-decoration: none;
-        &:before {
-          left: 20px;
-          width: 50%;
+        .sidebar2020 {
+            @extend .sidebar;
+            border-right: 10px solid $blue;
+            margin-bottom: 70px;
         }
-      }
+
+        .sidebar2017 {
+            @extend .sidebar;
+            border-right: 10px solid $green;
+            margin-bottom: 70px;
+        }
+
+        .sidebar2016 {
+            @extend .sidebar;
+            border-right: 10px solid $yellow;
+        }
+
+        .portfolio-item {
+            margin-bottom: 80px;
+            margin-left: 20px;
+
+            .portfolio-item-head {
+                display: flex;
+                align-items: center;
+            }
+
+            img:not(#badge) {
+                box-shadow: $boxShadowSm;
+
+                &.clickable {
+                    cursor: pointer;
+                }
+            }
+
+            #badge {
+                margin-bottom: 10px;
+            }
+
+            a.git-link {
+                padding-left: 20px;
+                text-decoration: none;
+                &:before {
+                    left: 20px;
+                    width: 50%;
+                }
+            }
+        }
     }
-  }
 }

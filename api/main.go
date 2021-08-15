@@ -87,7 +87,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 		js, err = json.Marshal(response{
 			Type:    "error",
-			Message: "Oops! We broke it. Please try again later. (be)",
+			Message: "Oops! We broke it. Please try again later.",
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
