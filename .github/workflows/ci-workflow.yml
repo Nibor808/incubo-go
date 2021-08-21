@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create Zip Deployment Pacakge
-        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x "*.git*" -x "docker-compose.yml" # exclude the git files
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x "*.git*" # exclude the git files
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
