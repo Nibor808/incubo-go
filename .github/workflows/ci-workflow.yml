@@ -2,7 +2,7 @@ name: Build, Test and Deploy
 
 env:
   AWS_REGION_NAME: ca-central-1
-  DEPLOY_PACKAGE_NAME: incubo-${{ github.sha }}.zip
+  DEPLOY_PACKAGE_NAME: incuboweb-${{ github.sha }}.zip
 
 on:
   push:
