@@ -18,6 +18,7 @@ services:
       - ./api:/incubo
     env_file:
       - ./api/.env
+      - /.env
 
   nginx:
     depends_on:
