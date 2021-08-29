@@ -19,8 +19,6 @@ const App: React.FC = () => {
         setLogoImg(document.getElementById('logo-img'));
     }, []);
 
-    console.log('====> A COMMENT TO CHANGE AGAIN MY MAN');
-
     window.onscroll = () => {
         const width = window.innerWidth;
 
