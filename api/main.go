@@ -49,7 +49,7 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if err != nil {
 		js, err = json.Marshal(response{
 			Type:    "error",
-			Message: "Oops! We broke it. Please try again later. ~ data decode",
+			Message: "Oops! We broke it. Please try again later.",
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -64,6 +64,9 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if !aEExists || !mPExists || !mHExists {
 		log.Fatal("cannot get mail env variables")
 	}
+	log.Println("E-----", adminEmail)
+	log.Println("P-----", mailPass)
+	log.Println("H-----", mailHost)
 
 	auth := smtp.PlainAuth("", adminEmail, mailPass, mailHost)
 	to := []string{adminEmail}
