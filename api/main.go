@@ -44,11 +44,12 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var js []byte
 
 	var data emailData
+
 	err := decoder.Decode(&data)
 	if err != nil {
 		js, err = json.Marshal(response{
 			Type:    "error",
-			Message: "Oops! We broke it. Please try again later.",
+			Message: "Oops! We broke it. Please try again later. ~ data decode",
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -80,14 +81,14 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		data.Message +
 		"\r\n")
 
-	err = smtp.SendMail(mailHost + ":587", auth, adminEmail, to, msg)
+	err = smtp.SendMail(mailHost+":587", auth, adminEmail, to, msg)
 
 	if err != nil {
 		log.Println("Failed to send email:", err)
 
 		js, err = json.Marshal(response{
 			Type:    "error",
-			Message: "Oops! We broke it. Please try again later.",
+			Message: "Oops! We broke it. Please try again later. ~ send error",
 		})
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

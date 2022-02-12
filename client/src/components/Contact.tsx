@@ -1,6 +1,6 @@
 import React, {Suspense, useRef, useState} from 'react';
 import validateForm from '../utils/validate_form';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -12,11 +12,9 @@ enum ResponseDataType {
     ERROR = 'error',
 }
 
-type Response = {
-    data: {
-        Type: ResponseDataType;
-        Message: string;
-    };
+type ResponseData = {
+    Type: ResponseDataType;
+    Message: string;
 };
 
 enum MailInfoType {
@@ -56,8 +54,9 @@ const Contact = () => {
     const [name, setName] = useState<MailInfoType>(MailInfoType.DEFAULT);
     const [email, setEmail] = useState<MailInfoType>(MailInfoType.DEFAULT);
     const [message, setMessage] = useState<MailInfoType>(MailInfoType.DEFAULT);
-    const [response, setResponse] = useState<Response>({
-        data: {Message: '', Type: ResponseDataType.DEFAULT},
+    const [response, setResponse] = useState<ResponseData>({
+        Message: '',
+        Type: ResponseDataType.DEFAULT,
     });
     const [errors, setErrors] = useState<Errors>({
         nameError: '',
@@ -116,9 +115,22 @@ const Contact = () => {
             }
         }
 
-        setResponse({data: {Message: '', Type: ResponseDataType.DEFAULT}});
+        setResponse({Message: '', Type: ResponseDataType.DEFAULT});
         clearErrors();
         return true;
+    };
+
+    const resetForm = (): void => {
+        recaptchaRef.current?.reset();
+        setIsSending(false);
+        setName(MailInfoType.DEFAULT);
+        setEmail(MailInfoType.DEFAULT);
+        setMessage(MailInfoType.DEFAULT);
+
+        setTimeout(() => {
+            contactForm?.reset();
+            setResponse({Message: '', Type: ResponseDataType.DEFAULT});
+        }, 3000);
     };
 
     const sendMail = async (ev: React.FormEvent) => {
@@ -133,39 +145,21 @@ const Contact = () => {
 
             setIsSending(true);
 
-            try {
-                const response = await axios.post('/api/sendmail', info);
+            const response: AxiosResponse = await axios.post('/api/sendmail', info);
+            const {data}: {data: ResponseData} = response;
 
-                setResponse(response);
-            } catch (err) {
-                setResponse({
-                    data: {
-                        Type: ResponseDataType.ERROR,
-                        Message: 'Oops! We broke it. Please try again later.',
-                    },
-                });
-            } finally {
-                recaptchaRef.current?.reset();
-                setIsSending(false);
-                setName(MailInfoType.DEFAULT);
-                setEmail(MailInfoType.DEFAULT);
-                setMessage(MailInfoType.DEFAULT);
-
-                setTimeout(() => {
-                    contactForm?.reset();
-                    setResponse({data: {Message: '', Type: ResponseDataType.DEFAULT}});
-                }, 3000);
-            }
+            setResponse(data);
+            resetForm();
         }
     };
 
     const showResponse = React.useCallback(() => {
         let klass;
 
-        if (response.data) {
-            klass = response.data.Type === ResponseDataType.OK ? 'success' : 'error';
+        if (response) {
+            klass = response.Type === ResponseDataType.OK ? 'success' : 'error';
 
-            return <p className={klass}>{response.data.Message}</p>;
+            return <p className={klass}>{response.Message}</p>;
         }
 
         return null;

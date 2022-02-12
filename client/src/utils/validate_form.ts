@@ -1,6 +1,6 @@
 import {FormError} from '../components/Contact';
 
-const ValidateForm = (
+const validateForm = (
     name: string,
     email: string,
     message: string,
@@ -44,4 +44,4 @@ const ValidateForm = (
     return errors;
 };
 
-export default ValidateForm;
+export default validateForm;
