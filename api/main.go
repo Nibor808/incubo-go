@@ -64,9 +64,6 @@ func sendMail(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	if !aEExists || !mPExists || !mHExists {
 		log.Fatal("cannot get mail env variables")
 	}
-	log.Println("E-----", adminEmail)
-	log.Println("P-----", mailPass)
-	log.Println("H-----", mailHost)
 
 	auth := smtp.PlainAuth("", adminEmail, mailPass, mailHost)
 	to := []string{adminEmail}
