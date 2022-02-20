@@ -34,7 +34,7 @@ func main() {
 
 	r.POST("/sendmail", sendMail)
 
-	log.Println("Listening on 5000")
+	log.Println("Listening on 5000 - new config Feb 20/22")
 	log.Fatal(http.ListenAndServe(":5000", r))
 }
 
