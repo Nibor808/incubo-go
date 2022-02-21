@@ -123,7 +123,7 @@ jobs:
         run: |
           aws elasticbeanstalk create-application-version \
           --application-name incubo \
-          --version-label "${{ env.VERSION_LABEL }}" \
+          --version-label "${{ env.DEPLOY_PACKAGE_NAME }}" \
           --description "IncuboApp-${{ github.sha }}" \
           --source-bundle S3Bucket="${{ secrets.S3_BUCKET_NAME }}",S3Key="incubo/${{ env.DEPLOY_PACKAGE_NAME }}"
 
