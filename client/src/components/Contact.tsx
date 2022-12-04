@@ -68,6 +68,7 @@ const Contact = () => {
         captchaError: '',
     });
     const [isSending, setIsSending] = useState(false);
+    console.log('====> F TEST 2',)
 
     const validateValues = (ev: React.FormEvent) => {
         ev.preventDefault();
