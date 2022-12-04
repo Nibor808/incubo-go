@@ -47,6 +47,7 @@ const App: React.FC = () => {
             }
         }
     };
+    console.log('====> F TEST 2',)
 
     const toTop = React.useCallback((ev: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         ev.preventDefault();
