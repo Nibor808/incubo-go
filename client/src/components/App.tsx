@@ -19,6 +19,7 @@ const App: React.FC = () => {
         setLogoImg(document.getElementById('logo-img'));
     }, []);
     console.log('====> F TEST',)
+    console.log('====> F TEST 2',)
 
     window.onscroll = () => {
         const width = window.innerWidth;
